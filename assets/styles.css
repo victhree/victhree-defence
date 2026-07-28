@@ -220,6 +220,43 @@ section{padding:74px 0;position:relative}
 }
 
 /* ============================================================
+   SOUND FAMILIAR? — pain agitation (cream)
+   ============================================================ */
+.familiar{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.familiar .wrap{max-width:1000px}
+.familiar .fam-top{text-align:center}
+.familiar-pill{display:inline-flex;align-items:center;gap:9px;font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:.18em;font-size:.7rem;color:var(--ink-soft);background:#fff;border:1px solid var(--line-2);border-radius:30px;padding:9px 18px;margin:0 0 26px}
+.familiar-pill svg{width:13px;height:13px;color:var(--gold)}
+.familiar .fh{font-family:var(--serif);font-weight:800;color:var(--navy);font-size:clamp(1.9rem,5vw,3rem);line-height:1.12;margin:0 auto 44px;max-width:18ch}
+.familiar .fh .ac{color:var(--gold);font-style:italic}
+.familiar-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:0 auto 44px}
+.fcard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px 22px;text-align:center;box-shadow:var(--shadow);transition:.15s}
+.fcard:hover{border-color:var(--gold);transform:translateY(-3px)}
+.fcard .fic{width:52px;height:52px;border-radius:13px;background:var(--paper-2);color:var(--navy);display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
+.fcard .fic svg{width:26px;height:26px}
+.fcard .fl{font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:.82rem;color:var(--navy)}
+.familiar .body{text-align:center;max-width:62ch;margin:0 auto}
+.familiar .body .lead{font-family:var(--serif);font-size:clamp(1.15rem,2.7vw,1.5rem);color:var(--ink-soft);line-height:1.5;margin:0 0 16px}
+.familiar .body .lead b{color:var(--navy)}
+.familiar .body .sub{font-family:var(--sans);font-size:.98rem;color:var(--ink-soft);opacity:.9;margin:0}
+@media(max-width:760px){.familiar-cards{grid-template-columns:1fr}}
+
+/* ============================================================
+   HERE'S WHAT NOBODY TELLS YOU — reframe (cream card)
+   ============================================================ */
+.reframe{background:var(--paper)}
+.reframe .card{max-width:940px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-lg);padding:clamp(34px,6vw,64px);text-align:center}
+.reframe .overline{justify-content:center}
+.reframe h2{font-size:clamp(1.5rem,3.8vw,2.2rem);color:var(--navy);margin:0}
+.reframe h2 .ac{color:var(--ink-soft);font-style:italic;font-weight:600}
+.reframe .rule{height:1px;background:var(--line);margin:clamp(26px,4vw,38px) 0}
+.reframe .stat{font-family:var(--serif);font-weight:800;color:var(--navy);font-size:clamp(3rem,10vw,5.6rem);line-height:1;letter-spacing:-.01em}
+.reframe .stat-cap{font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:.2em;font-size:.72rem;color:var(--ink-soft);margin-top:16px;line-height:1.6}
+.reframe .rbody{font-family:var(--serif);font-size:clamp(1.05rem,2.4vw,1.28rem);color:var(--ink-soft);line-height:1.55;max-width:60ch;margin:0 auto}
+.reframe .rbody b{color:var(--navy)}
+.reframe .rbody .muted{display:block;color:var(--ink-soft);opacity:.65;margin-top:8px;font-size:.9em;font-family:var(--sans)}
+
+/* ============================================================
    THE GS COURSE — consolidated (NAVY band + photo in background)
    ============================================================ */
 .course{background:var(--navy-3);color:#fff;border-top:3px solid var(--gold);border-bottom:3px solid var(--gold);overflow:hidden}
