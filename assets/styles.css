@@ -118,7 +118,7 @@ section{padding:74px 0;position:relative}
   opacity:.22;pointer-events:none}
 .hero::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(90deg,var(--navy) 8%,rgba(15,35,64,.72) 46%,rgba(15,35,64,.35) 100%)}
-.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.08fr .92fr;gap:44px;align-items:center;padding:70px 22px 36px}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.08fr .92fr;gap:44px;align-items:start;padding:70px 22px 36px}
 .badge-line{display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;color:var(--gold-soft);border:1px solid rgba(233,220,184,.4);border-radius:30px;padding:7px 16px;margin-bottom:22px}
 .hero h1{font-family:var(--serif);font-weight:800;text-transform:uppercase;color:#fff;font-size:clamp(2.1rem,5.4vw,3.4rem);line-height:1.06;margin:0 0 .4em}
 .hero h1 .g{color:var(--gold-bright)}
