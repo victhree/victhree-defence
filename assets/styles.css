@@ -78,7 +78,7 @@ section{padding:74px 0;position:relative}
 /* ============================================================
    NAV (navy)
    ============================================================ */
-.nav{position:sticky;top:0;z-index:60;background:var(--navy);border-bottom:1px solid rgba(184,145,47,.4);transition:box-shadow .2s}
+.nav{position:sticky;top:0;z-index:60;background:#011d45;border-bottom:1px solid rgba(184,145,47,.4);transition:box-shadow .2s}
 .nav.scrolled{box-shadow:0 6px 20px rgba(0,0,0,.28);border-bottom-color:var(--gold)}
 .nav .wrap{display:flex;align-items:center;gap:18px;height:64px;max-width:1200px}
 .nav-brand{display:flex;align-items:center;gap:11px;text-decoration:none;margin-right:auto}
@@ -113,7 +113,7 @@ section{padding:74px 0;position:relative}
 /* ============================================================
    HERO (navy + photo in background)
    ============================================================ */
-.hero{position:relative;color:var(--paper);border-bottom:3px solid var(--gold);overflow:hidden;
+.hero{position:relative;color:var(--paper);border-bottom:3px solid var(--gold);overflow:hidden;padding-top:0;
   background:linear-gradient(160deg,var(--navy) 0%,var(--navy-3) 100%)}
 /* mentor photo washed into the background, anchored right */
 .hero::before{content:"";position:absolute;inset:0;
@@ -122,7 +122,7 @@ section{padding:74px 0;position:relative}
 .hero::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(90deg,var(--navy) 8%,rgba(15,35,64,.72) 46%,rgba(15,35,64,.35) 100%)}
 .hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.08fr .92fr;gap:44px;align-items:start;padding:70px 22px 36px}
-.hero-banner{width:100%;max-width:560px;height:auto;display:block;margin:0 0 22px}
+.hero-banner{width:100%;max-width:340px;height:auto;display:block;margin:0 0 18px}
 .badge-line{display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;color:var(--gold-soft);border:1px solid rgba(233,220,184,.4);border-radius:30px;padding:7px 16px;margin-bottom:22px}
 .hero h1{font-family:var(--serif);font-weight:800;text-transform:uppercase;color:#fff;font-size:clamp(2.1rem,5.4vw,3.4rem);line-height:1.06;margin:0 0 .4em}
 .hero h1 .g{color:var(--gold-bright)}
