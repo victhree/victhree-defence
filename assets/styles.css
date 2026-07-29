@@ -132,6 +132,8 @@ section{padding:74px 0;position:relative}
 .hero-photo{justify-self:center;position:relative;margin-top:3.5rem}
 .hero-photo .frame{width:min(426px,40vw);border-radius:16px;overflow:hidden;border:1px solid rgba(233,220,184,.4);box-shadow:var(--shadow-lg);background:var(--navy-2)}
 .hero-photo .frame img{width:100%;height:auto;display:block}
+.hero-photo .photo-credit{margin:16px 0 0;font-family:var(--sans);font-size:.9rem;line-height:1.5;color:var(--gold-soft);text-align:center}
+.hero-photo .photo-credit b{color:#fff;font-weight:700}
 .hero-photo .cap{position:absolute;left:16px;bottom:16px;font-family:var(--sans);color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.7)}
 .hero-photo .cap .nm{font-weight:800;font-size:1rem}
 .hero-photo .cap .rl{font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;color:var(--gold-bright)}
