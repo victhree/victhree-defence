@@ -133,7 +133,7 @@ section{padding:74px 0;position:relative}
 .hero .tagline{font-family:var(--sans);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-soft);margin:0 0 26px}
 .hero .tagline .dot{color:var(--gold);margin:0 8px}
 .hero-cta{display:flex;flex-wrap:wrap;gap:14px}
-.hero-photo{justify-self:center;position:relative;margin-top:3.5rem}
+.hero-photo{justify-self:center;position:relative;margin-top:160px}
 .hero-photo .frame{width:min(426px,40vw);border-radius:16px;overflow:hidden;border:1px solid rgba(233,220,184,.4);box-shadow:var(--shadow-lg);background:var(--navy-2)}
 .hero-photo .frame img{width:100%;height:auto;display:block}
 .hero-photo .photo-credit{margin:16px 0 0;font-family:var(--sans);font-size:.9rem;line-height:1.5;color:var(--gold-soft);text-align:center}
