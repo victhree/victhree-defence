@@ -259,6 +259,8 @@ section{padding:74px 0;position:relative}
 .familiar .body .lead{font-family:var(--serif);font-size:clamp(1.15rem,2.7vw,1.5rem);color:var(--ink-soft);line-height:1.5;margin:0 0 16px}
 .familiar .body .lead b{color:var(--navy)}
 .familiar .body .sub{font-family:var(--sans);font-size:.98rem;color:var(--ink-soft);opacity:.9;margin:0}
+/* progressively fading tail ("quietly slips away") */
+.fade-out{background:linear-gradient(90deg,var(--navy) 0%,var(--navy) 28%,rgba(15,35,64,0) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
 @media(max-width:760px){.familiar-cards{grid-template-columns:1fr}}
 
 /* ============================================================
@@ -482,6 +484,7 @@ section{padding:74px 0;position:relative}
 .site-foot{background:var(--navy-3);color:var(--gold-soft);padding:52px 0 30px}
 .foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:32px;margin-bottom:34px}
 .foot-brand img{width:38px;height:38px;margin-bottom:12px}
+.foot-brand .foot-banner{width:auto;max-width:280px;height:auto;margin-bottom:14px}
 .foot-brand .fb-t{font-family:var(--serif);font-weight:700;letter-spacing:.03em;color:#fff;font-size:1.15rem}
 .foot-brand .fb-t b{color:var(--gold)}
 .foot-brand p{color:rgba(233,220,184,.72);font-family:var(--sans);font-size:.88rem;max-width:38ch;margin:10px 0 0}
