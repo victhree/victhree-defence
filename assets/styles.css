@@ -376,6 +376,27 @@ section{padding:74px 0;position:relative}
 @media(max-width:720px){.tools-grid{grid-template-columns:1fr}}
 
 /* ============================================================
+   GALLERY — auto-rotating marquee (cream)
+   ============================================================ */
+.gallery{background:var(--paper-2);overflow:hidden}
+.gallery .section-head{margin-bottom:34px}
+.marquee{position:relative;width:100%;overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.marquee-track{display:flex;gap:26px;width:max-content;padding:22px 13px;animation:gscroll 52s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes gscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.gcard{flex:0 0 auto;width:224px;aspect-ratio:3/4;border-radius:18px;overflow:hidden;
+  background:linear-gradient(160deg,var(--navy-2),var(--navy-3));border:1px solid var(--line);
+  box-shadow:var(--shadow-lg);display:flex;align-items:center;justify-content:center;
+  color:rgba(233,220,184,.45);transform:rotate(-4deg)}
+.gcard:nth-child(even){transform:rotate(4deg)}
+.gcard svg{width:60px;height:60px}
+.gcard img{width:100%;height:100%;object-fit:cover}
+@media(prefers-reduced-motion:reduce){.marquee-track{animation:none}}
+@media(max-width:560px){.gcard{width:158px}.marquee-track{gap:18px}}
+
+/* ============================================================
    TESTIMONIALS (cream)
    ============================================================ */
 .testimonials{background:var(--paper-2)}
