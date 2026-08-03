@@ -146,10 +146,10 @@ section{padding:74px 0;position:relative}
   .hero::after{background:linear-gradient(180deg,rgba(15,35,64,.7),rgba(15,35,64,.85))}
   .hero .wrap{display:flex;flex-direction:column;align-items:center;text-align:center;gap:13px;padding-top:40px}
   .hero-copy,.hero-photo{display:contents}
-  .hero-photo .frame{order:1;width:min(360px,82vw);align-self:center;margin:0}
-  .badge-line{order:2;align-self:center;margin:6px 0 0}
-  .hero h1{order:3;align-self:stretch}
-  .hero-sub{order:4;align-self:stretch}
+  .badge-line{order:1;align-self:center;margin:6px 0 0}
+  .hero h1{order:2;align-self:stretch}
+  .hero-sub{order:3;align-self:stretch}
+  .hero-photo .frame{order:4;width:min(360px,82vw);align-self:center;margin:10px 0 0}
   .hero-photo .photo-credit{order:5;align-self:stretch;margin-top:6px}
   .hero-banner{margin-left:auto;margin-right:auto}
 }
@@ -330,7 +330,6 @@ section{padding:74px 0;position:relative}
 .plans .lede{text-wrap:balance}
 /* ---- mobile single-line headings + squared tiles ---- */
 @media(max-width:600px){
-  .hero h1{font-size:clamp(.8rem,3.6vw,1.3rem);line-height:1.24}
   .familiar .fh{font-size:clamp(1.3rem,6.2vw,1.9rem)}
   .practice h2,.plans h2,.course h2,.cta-band h2{font-size:clamp(1.05rem,4.6vw,1.5rem);line-height:1.22}
   .cta-band p.warn{font-size:.82rem;line-height:1.4}
