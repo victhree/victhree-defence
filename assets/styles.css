@@ -386,15 +386,12 @@ section{padding:74px 0;position:relative}
 .marquee-track{display:flex;gap:26px;width:max-content;padding:22px 13px;animation:gscroll 52s linear infinite}
 .marquee:hover .marquee-track{animation-play-state:paused}
 @keyframes gscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.gcard{flex:0 0 auto;width:224px;aspect-ratio:3/4;border-radius:18px;overflow:hidden;
-  background:linear-gradient(160deg,var(--navy-2),var(--navy-3));border:1px solid var(--line);
-  box-shadow:var(--shadow-lg);display:flex;align-items:center;justify-content:center;
-  color:rgba(233,220,184,.45);transform:rotate(-4deg)}
-.gcard:nth-child(even){transform:rotate(4deg)}
-.gcard svg{width:60px;height:60px}
-.gcard img{width:100%;height:100%;object-fit:cover}
+.gcard{flex:0 0 auto;width:320px;aspect-ratio:4/3;border-radius:16px;overflow:hidden;
+  background:var(--navy-3);border:1px solid var(--line);box-shadow:var(--shadow-lg);transform:rotate(-3.5deg)}
+.gcard:nth-child(even){transform:rotate(3.5deg)}
+.gcard img{width:100%;height:100%;object-fit:cover;display:block}
 @media(prefers-reduced-motion:reduce){.marquee-track{animation:none}}
-@media(max-width:560px){.gcard{width:158px}.marquee-track{gap:18px}}
+@media(max-width:560px){.gcard{width:232px}.marquee-track{gap:18px}}
 
 /* ============================================================
    TESTIMONIALS (cream)
