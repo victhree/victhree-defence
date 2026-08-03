@@ -335,7 +335,7 @@ section{padding:74px 0;position:relative}
   .cta-band h2{font-size:clamp(1.05rem,4.6vw,1.5rem);line-height:1.22}
   .cta-band p.warn{font-size:.82rem;line-height:1.4}
   .plans .lede br{display:none}
-  .gallery h2{font-size:1.3rem;line-height:1.24}
+  section.gallery h2{font-size:1.3rem;line-height:1.24}
   .reframe .overline{font-size:.68rem;letter-spacing:.06em;white-space:nowrap}
   .reframe .overline::before,.reframe .overline::after{width:16px}
   .course .flow{flex-wrap:nowrap;gap:4px 2px;font-size:.56rem;letter-spacing:.05em;max-width:none}
