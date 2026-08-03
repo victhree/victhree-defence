@@ -410,12 +410,14 @@ section{padding:74px 0;position:relative}
 .gallery .section-head{margin-bottom:34px;max-width:1000px}
 .gallery h2{white-space:nowrap;font-size:clamp(1.25rem,3vw,2rem)}
 @media(max-width:760px){.gallery h2{white-space:normal}}
-.marquee{position:relative;width:100%;overflow:hidden;
+.marquee{position:relative;width:100%;overflow-x:auto;overflow-y:hidden;
+  scrollbar-width:none;-ms-overflow-style:none;cursor:grab;-webkit-overflow-scrolling:touch;
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
   mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
-.marquee-track{display:flex;gap:26px;width:max-content;padding:22px 13px;animation:gscroll 100s linear infinite}
-.marquee:hover .marquee-track{animation-play-state:paused}
-@keyframes gscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee::-webkit-scrollbar{display:none}
+.marquee.dragging{cursor:grabbing}
+.marquee-track{display:flex;gap:26px;width:max-content;padding:22px 13px;user-select:none}
+.marquee-track img{-webkit-user-drag:none;user-drag:none}
 .gcard{flex:0 0 auto;width:320px;aspect-ratio:4/3;border-radius:16px;overflow:hidden;
   background:var(--navy-3);border:1px solid var(--line);box-shadow:var(--shadow)}
 .gcard img{width:100%;height:100%;object-fit:cover;display:block}
