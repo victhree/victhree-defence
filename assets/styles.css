@@ -331,9 +331,9 @@ section{padding:74px 0;position:relative}
 .plans .lede{text-wrap:balance}
 /* ---- mobile single-line headings + squared tiles ---- */
 @media(max-width:600px){
-  .hero h1{font-size:1.55rem;line-height:1.2;text-wrap:balance}
+  .hero h1{font-size:clamp(1.55rem,6.7vw,1.85rem);line-height:1.2;text-wrap:balance}
   .familiar .fh{font-size:clamp(1.3rem,6.2vw,1.9rem)}
-  .practice h2,.plans h2,.course h2{font-size:1.25rem;line-height:1.24}
+  .practice h2,.plans h2,.course h2{font-size:clamp(1.25rem,5.4vw,1.5rem);line-height:1.24}
   .cta-band h2{font-size:clamp(1.05rem,4.6vw,1.5rem);line-height:1.22}
   .cta-band p.warn{font-size:.82rem;line-height:1.4}
   .plans .lede br{display:none}
