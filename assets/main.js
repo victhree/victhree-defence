@@ -106,4 +106,26 @@
     marquee.addEventListener('pointerup', endDrag);
     marquee.addEventListener('pointercancel', endDrag);
   }
+
+  // --- comparison table: one-time nudge so people notice it scrolls right ---
+  var ctable = document.querySelector('.ctable-wrap');
+  if (ctable && 'IntersectionObserver' in window) {
+    var nudged = false;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting || nudged) return;
+        if (ctable.scrollWidth <= ctable.clientWidth + 10) return; // nothing hidden
+        nudged = true;
+        io.disconnect();
+        try {
+          ctable.scrollTo({ left: 72, behavior: 'smooth' });
+          setTimeout(function () { ctable.scrollTo({ left: 0, behavior: 'smooth' }); }, 700);
+        } catch (_) {
+          ctable.scrollLeft = 72;
+          setTimeout(function () { ctable.scrollLeft = 0; }, 700);
+        }
+      });
+    }, { threshold: 0.45 });
+    io.observe(ctable);
+  }
 })();

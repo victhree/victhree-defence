@@ -487,6 +487,13 @@ section{padding:74px 0;position:relative}
 .ctable thead .best .tagbest{color:var(--gold-bright);font-weight:800}
 .ctable thead .best .big{color:#fff}
 .ctable td.best{background:rgba(184,145,47,.08)}
+.swipe-hint{display:none}
+@media(max-width:700px){
+  .swipe-hint{display:inline-flex;align-items:center;gap:4px;font-size:.6rem;font-weight:800;
+    text-transform:uppercase;letter-spacing:.08em;color:var(--gold);white-space:nowrap}
+  .swipe-hint svg{width:15px;height:15px;animation:swipeNudge 1.3s ease-in-out infinite}
+}
+@keyframes swipeNudge{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
 .ci{display:inline-flex;align-items:center;justify-content:center;width:27px;height:27px;border-radius:50%}
 .ci.yes{background:rgba(63,107,58,.15);color:#3f6b3a}
 .ci.no{background:rgba(28,35,49,.06);color:#9aa3b0}
