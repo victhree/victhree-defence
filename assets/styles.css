@@ -274,7 +274,7 @@ section{padding:74px 0;position:relative}
 .reframe .rule{height:1px;background:var(--line);margin:clamp(26px,4vw,38px) 0}
 .reframe .stat{font-family:var(--serif);font-weight:800;color:var(--navy);font-size:clamp(3rem,10vw,5.6rem);line-height:1;letter-spacing:-.01em}
 .reframe .stat-cap{font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:.2em;font-size:.72rem;color:var(--ink-soft);margin-top:16px;line-height:1.6}
-.reframe .rbody{font-family:var(--serif);font-size:clamp(1.05rem,2.4vw,1.28rem);color:var(--ink-soft);line-height:1.55;max-width:60ch;margin:0 auto}
+.reframe .rbody{font-family:var(--serif);font-size:clamp(1.05rem,2.4vw,1.28rem);color:var(--ink-soft);line-height:1.55;max-width:62ch;margin:0 auto;text-wrap:pretty}
 .reframe .rbody b{color:var(--navy)}
 .reframe .rbody .muted{display:block;color:var(--ink-soft);opacity:.65;margin-top:8px;font-size:.9em;font-family:var(--sans)}
 
