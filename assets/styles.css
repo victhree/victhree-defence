@@ -247,7 +247,7 @@ section{padding:74px 0;position:relative}
 .familiar .fam-top{text-align:center}
 .familiar-pill{display:inline-flex;align-items:center;gap:9px;font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:.18em;font-size:.7rem;color:var(--ink-soft);background:#fff;border:1px solid var(--line-2);border-radius:30px;padding:9px 18px;margin:0 0 26px}
 .familiar-pill svg{width:13px;height:13px;color:var(--gold)}
-.familiar .fh{font-family:var(--serif);font-weight:800;color:var(--navy);font-size:clamp(1.9rem,5vw,3rem);line-height:1.12;margin:0 auto 44px;max-width:18ch}
+.familiar .fh{font-family:var(--serif);font-weight:800;color:var(--navy);font-size:clamp(1.9rem,5vw,3rem);line-height:1.12;margin:0 auto 44px;max-width:none}
 .familiar .fh .ac{color:var(--gold);font-style:italic}
 .familiar-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:0 auto 44px}
 .fcard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px 22px;text-align:center;box-shadow:var(--shadow);transition:.15s}
@@ -255,7 +255,7 @@ section{padding:74px 0;position:relative}
 .fcard .fic{width:52px;height:52px;border-radius:13px;background:var(--paper-2);color:var(--navy);display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
 .fcard .fic svg{width:26px;height:26px}
 .fcard .fl{font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:.82rem;color:var(--navy)}
-.familiar .body{text-align:center;max-width:62ch;margin:0 auto}
+.familiar .body{text-align:center;max-width:800px;margin:0 auto}
 .familiar .body .lead{font-family:var(--serif);font-size:clamp(1.15rem,2.7vw,1.5rem);color:var(--ink-soft);line-height:1.5;margin:0 0 16px}
 .familiar .body .lead b{color:var(--navy)}
 .familiar .body .sub{font-family:var(--sans);font-size:.98rem;color:var(--ink-soft);opacity:.9;margin:0}
