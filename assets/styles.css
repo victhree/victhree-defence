@@ -431,7 +431,7 @@ section{padding:74px 0;position:relative}
 .plan-foot{margin-top:auto;display:flex;flex-direction:column;gap:12px;padding-top:8px}
 .plan-fee{font-family:var(--serif);font-weight:800;font-size:1.3rem;color:var(--navy)}
 .plan-foot .btn{width:100%}
-@media(max-width:860px){.plan-grid{grid-template-columns:1fr;max-width:440px;margin:0 auto}.plan-flag{left:26px;transform:none}}
+@media(max-width:860px){.plan-grid{grid-template-columns:1fr;max-width:440px;margin:0 auto}}
 
 /* About — bolder coach headline + CTA */
 .about h2.big-name{font-size:clamp(1.9rem,4.6vw,2.85rem);line-height:1.12;margin:0 0 .2em}
