@@ -135,7 +135,7 @@ section{padding:74px 0;position:relative}
 .hero .tagline .dot{color:var(--gold);margin:0 8px}
 .hero-cta{display:flex;flex-wrap:wrap;gap:14px}
 .hero-photo{justify-self:center;position:relative;margin-top:3.5rem}
-.hero-photo .frame{width:min(426px,40vw);border-radius:16px;overflow:hidden;border:1px solid rgba(233,220,184,.4);box-shadow:var(--shadow-lg);background:var(--navy-2)}
+.hero-photo .frame{width:min(426px,40vw);margin-inline:auto;border-radius:16px;overflow:hidden;border:1px solid rgba(233,220,184,.4);box-shadow:var(--shadow-lg);background:var(--navy-2)}
 .hero-photo .frame img{width:100%;height:auto;display:block}
 .hero-photo .photo-credit{margin:16px 0 0;font-family:var(--sans);font-size:.9rem;line-height:1.5;color:var(--gold-soft);text-align:center}
 .hero-photo .photo-credit b{color:#fff;font-weight:700}
@@ -312,11 +312,12 @@ section{padding:74px 0;position:relative}
 .course-cta .btn.ghost.dark:hover{border-color:var(--gold);color:#fff}
 @media(max-width:820px){.course-points{grid-template-columns:1fr}}
 @media(max-width:640px){
-  .course-meta{grid-template-columns:1fr 1fr}
+  .course-meta{grid-template-columns:1fr}
   .course-meta .cm{border-left:none;border-top:1px solid var(--line-dark)}
-  .course-meta .cm:nth-child(-n+2){border-top:none}
-  .course-meta .cm:nth-child(even){border-left:1px solid var(--line-dark)}
+  .course-meta .cm:first-child{border-top:none}
 }
+/* let awkward mid-sentence line breaks flow naturally on small screens */
+@media(max-width:560px){.practice .lede br,.plans .lede br,.familiar .lead br{display:none}}
 
 /* ============================================================
    WHAT WE DO — brand pillars (cream)
