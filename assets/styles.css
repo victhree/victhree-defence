@@ -379,7 +379,9 @@ section{padding:74px 0;position:relative}
    GALLERY — auto-rotating marquee (cream)
    ============================================================ */
 .gallery{background:var(--paper-2);overflow:hidden}
-.gallery .section-head{margin-bottom:34px}
+.gallery .section-head{margin-bottom:34px;max-width:1000px}
+.gallery h2{white-space:nowrap;font-size:clamp(1.25rem,3vw,2rem)}
+@media(max-width:760px){.gallery h2{white-space:normal}}
 .marquee{position:relative;width:100%;overflow:hidden;
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
   mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
