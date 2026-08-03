@@ -327,10 +327,10 @@ section{padding:74px 0;position:relative}
 /* mobile-only line breaks */
 .m-brk{display:none}
 @media(max-width:600px){.m-brk{display:inline}}
-.plans .lede{text-wrap:pretty}
+.plans .lede{text-wrap:balance}
 /* ---- mobile single-line headings + squared tiles ---- */
 @media(max-width:600px){
-  .hero h1{font-size:clamp(.9rem,4.05vw,1.4rem);line-height:1.22}
+  .hero h1{font-size:clamp(.8rem,3.6vw,1.3rem);line-height:1.24}
   .familiar .fh{font-size:clamp(1.3rem,6.2vw,1.9rem)}
   .practice h2,.plans h2,.course h2,.cta-band h2{font-size:clamp(1.05rem,4.6vw,1.5rem);line-height:1.22}
   .cta-band p.warn{font-size:.82rem;line-height:1.4}
