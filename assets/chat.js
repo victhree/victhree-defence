@@ -22,7 +22,7 @@
   };
 
   var GREETING =
-    "Jai Hind! 🇮🇳 Good to have you here. May I know your name? And what is the one thing in your preparation that is troubling you the most right now? Let's get your journey started.";
+    "Jai Hind! Good to have you here. May I know your name? And what is the biggest challenge you're facing in your preparation? Let's get your journey started.";
 
   var CHIPS = [
     "My GS score won't improve",
