@@ -156,27 +156,40 @@
     busy = true; sendBtn.disabled = true;
     var typing = showTyping();
 
-    fetch(CONFIG.endpoint, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ type: "chat", messages: history })
-    })
-      .then(function (r) { return r.json().catch(function () { return {}; }); })
-      .then(function (data) {
-        typing.remove();
-        var reply = data && data.reply;
-        if (reply) {
-          addBot(reply);
-          history.push({ role: "assistant", content: reply });
-        } else {
-          addBot("I'm having trouble connecting right now. Please try again in a moment — or use the Contact section of the site to reach the team directly.");
-        }
+    function finish() { busy = false; sendBtn.disabled = false; input.focus(); }
+    function fail() {
+      typing.remove();
+      addBot("I'm having trouble connecting right now. Please try again in a moment, or use the Contact section of the site to reach the team directly.");
+      finish();
+    }
+    // Quietly retry up to 2 times (2.5s apart) to ride out brief rate limits,
+    // so a transient blip shows as a slightly slower reply, not an error.
+    function attempt(n) {
+      fetch(CONFIG.endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type: "chat", messages: history })
       })
-      .catch(function () {
-        typing.remove();
-        addBot("I couldn't reach the server just now. Please try again shortly, or reach the team through the Contact section.");
-      })
-      .then(function () { busy = false; sendBtn.disabled = false; input.focus(); });
+        .then(function (r) { return r.ok ? r.json().catch(function () { return {}; }) : {}; })
+        .then(function (data) {
+          var reply = data && data.reply;
+          if (reply) {
+            typing.remove();
+            addBot(reply);
+            history.push({ role: "assistant", content: reply });
+            finish();
+          } else if (n < 2) {
+            setTimeout(function () { attempt(n + 1); }, 2500);
+          } else {
+            fail();
+          }
+        })
+        .catch(function () {
+          if (n < 2) { setTimeout(function () { attempt(n + 1); }, 2500); }
+          else { fail(); }
+        });
+    }
+    attempt(0);
   }
 
   form.addEventListener("submit", function (e) { e.preventDefault(); send(); });
