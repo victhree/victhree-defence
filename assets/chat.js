@@ -43,7 +43,7 @@
   var panel = el("div", { id: "vt-panel", role: "dialog", "aria-label": "VicThree Defence mentor chat", hidden: "" });
   panel.innerHTML =
     '<div class="vt-head">' +
-      '<img class="vt-head-banner" src="assets/banner-wordmark.png?v=19" alt="VicThree Defence by Anmol Sharma">' +
+      '<img class="vt-head-banner" src="assets/ima-building.png?v=1" alt="Indian Military Academy, Dehradun">' +
       '<button class="vt-close" aria-label="Close chat">&times;</button>' +
     '</div>' +
     '<div class="vt-msgs" id="vt-msgs" aria-live="polite"></div>' +

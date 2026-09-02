@@ -24,10 +24,12 @@
 #vt-panel[hidden]{display:none}
 
 /* header */
-.vt-head{display:flex;align-items:center;gap:10px;padding:12px 14px;
+.vt-head{position:relative;padding:9px 12px;
   background:linear-gradient(135deg,var(--vt-navy),var(--vt-navy2));color:#fff}
-.vt-head-banner{height:34px;width:auto;max-width:calc(100% - 44px);object-fit:contain;object-position:left center;margin-right:auto;display:block}
-.vt-close{flex:0 0 auto;background:transparent;border:none;color:rgba(255,255,255,.8);font-size:1.5rem;line-height:1;cursor:pointer;padding:4px 6px;border-radius:8px}
+.vt-head-banner{display:block;width:100%;height:auto;max-height:82px;object-fit:contain}
+.vt-close{position:absolute;top:6px;right:8px;background:rgba(0,0,0,.18);border:none;color:rgba(255,255,255,.85);
+  font-size:1.35rem;line-height:1;cursor:pointer;padding:1px 8px;border-radius:8px}
+.vt-close:hover{background:rgba(0,0,0,.34);color:#fff}
 .vt-close:hover{background:rgba(255,255,255,.12);color:#fff}
 
 /* messages */
