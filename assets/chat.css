@@ -22,14 +22,16 @@
   background:transparent;border:none;box-shadow:none;font-family:inherit;color:var(--vt-ink)}
 #vt-panel[hidden]{display:none}
 
-/* IMA building standing on top of the box (transparent around it) */
+/* IMA building standing on top of the box (transparent around it).
+   Layered shadow: a soft light outline separates the dark roof from the
+   navy page behind, plus a dark lift shadow so it pops off the page. */
 .vt-topimg{display:block;width:100%;height:auto;margin:0 0 -2px;flex:0 0 auto;pointer-events:none;
-  filter:drop-shadow(0 5px 7px rgba(16,35,63,.22))}
+  filter:drop-shadow(0 0 1.4px rgba(255,255,255,.6)) drop-shadow(0 5px 8px rgba(0,0,0,.5))}
 
-/* the cream card holds the conversation */
+/* the cream card holds the conversation; square top corners fit the building base */
 .vt-card{position:relative;flex:1 1 auto;min-height:0;display:flex;flex-direction:column;overflow:hidden;
-  background:var(--vt-paper);border:1px solid var(--vt-line);border-radius:16px;
-  box-shadow:0 24px 60px rgba(16,35,63,.34)}
+  background:var(--vt-paper);border:1px solid var(--vt-line);border-radius:0 0 14px 14px;
+  box-shadow:0 22px 55px rgba(16,35,63,.5),0 4px 14px rgba(16,35,63,.34)}
 
 /* floating close button, top-right over the transparent sky */
 .vt-close{position:absolute;top:0;right:0;z-index:4;width:30px;height:30px;border:none;border-radius:50%;
