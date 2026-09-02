@@ -42,10 +42,9 @@
 
   var panel = el("div", { id: "vt-panel", role: "dialog", "aria-label": "VicThree Defence mentor chat", hidden: "" });
   panel.innerHTML =
-    '<div class="vt-head">' +
-      '<img class="vt-head-banner" src="assets/ima-building.png?v=1" alt="Indian Military Academy, Dehradun">' +
-      '<button class="vt-close" aria-label="Close chat">&times;</button>' +
-    '</div>' +
+    '<button class="vt-close" aria-label="Close chat">&times;</button>' +
+    '<img class="vt-topimg" src="assets/ima-building.png?v=2" alt="Indian Military Academy, Dehradun">' +
+    '<div class="vt-card">' +
     '<div class="vt-msgs" id="vt-msgs" aria-live="polite"></div>' +
     '<div class="vt-chips" id="vt-chips"></div>' +
     '<form class="vt-input" id="vt-form">' +
@@ -69,6 +68,7 @@
         '</div>' +
         '<p class="vt-lead-note" hidden>Thank you. The team will reach out shortly.</p>' +
       '</div>' +
+    '</div>' +
     '</div>';
 
   document.body.appendChild(launch);
