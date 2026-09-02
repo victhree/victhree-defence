@@ -72,6 +72,8 @@
     '</div>' +
     '</div>';
 
+  var backdrop = el("div", { id: "vt-backdrop" });
+  document.body.appendChild(backdrop);
   document.body.appendChild(launch);
   document.body.appendChild(panel);
 
@@ -88,13 +90,15 @@
   // ---------- open / close ----------
   function open() {
     panel.hidden = false;
+    backdrop.classList.add("vt-show");
     launch.classList.add("vt-hidden");
     if (!started) { started = true; addBot(GREETING); renderChips(); }
     setTimeout(function () { input.focus(); }, 60);
   }
-  function close() { panel.hidden = true; launch.classList.remove("vt-hidden"); }
+  function close() { panel.hidden = true; backdrop.classList.remove("vt-show"); launch.classList.remove("vt-hidden"); }
   launch.addEventListener("click", function () { interacted = true; open(); });
   panel.querySelector(".vt-close").addEventListener("click", function () { interacted = true; close(); });
+  backdrop.addEventListener("click", function () { interacted = true; close(); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !panel.hidden) { interacted = true; close(); } });
 
   // auto-open once per session, ~5s after landing (unless the visitor already acted)

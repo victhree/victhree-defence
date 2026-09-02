@@ -6,6 +6,11 @@
   --vt-cream:#f7f2e7; --vt-paper:#fffdf8; --vt-ink:#1b2a44; --vt-ink-soft:#5a6478; --vt-line:#e7dfce;
 }
 
+/* dim backdrop behind the open chat */
+#vt-backdrop{position:fixed;inset:0;z-index:9995;background:rgba(6,14,28,.42);
+  opacity:0;pointer-events:none;transition:opacity .22s ease}
+#vt-backdrop.vt-show{opacity:1;pointer-events:auto}
+
 /* launcher */
 #vt-launch{position:fixed;right:20px;bottom:20px;z-index:9998;display:flex;align-items:center;gap:9px;
   border:none;cursor:pointer;padding:0 18px 0 15px;height:56px;border-radius:30px;
@@ -94,7 +99,7 @@
 .vt-lead-note{margin:10px 0 0;font-size:.78rem;color:var(--vt-navy);font-weight:600;text-align:center}
 
 @media(max-width:480px){
-  #vt-panel{right:8px;left:8px;bottom:8px;width:auto;height:82vh;max-height:none}
+  #vt-panel{right:8px;left:8px;bottom:8px;width:auto;height:72vh;max-height:none}
   #vt-launch{right:14px;bottom:14px}
 }
 @media(prefers-reduced-motion:reduce){.vt-typing i{animation:none}#vt-launch{transition:none}}
