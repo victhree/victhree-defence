@@ -93,7 +93,11 @@
     backdrop.classList.add("vt-show");
     launch.classList.add("vt-hidden");
     if (!started) { started = true; addBot(GREETING); renderChips(); }
-    setTimeout(function () { input.focus(); }, 60);
+    // Focus (and pop the keyboard) only on fine-pointer devices, so phones
+    // don't auto-open the keyboard. On touch, it opens when they tap the box.
+    if (window.matchMedia && window.matchMedia("(pointer:fine)").matches) {
+      setTimeout(function () { input.focus(); }, 60);
+    }
   }
   function close() { panel.hidden = true; backdrop.classList.remove("vt-show"); launch.classList.remove("vt-hidden"); }
   launch.addEventListener("click", function () { interacted = true; open(); });

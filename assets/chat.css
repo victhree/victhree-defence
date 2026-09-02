@@ -7,7 +7,7 @@
 }
 
 /* dim backdrop behind the open chat */
-#vt-backdrop{position:fixed;inset:0;z-index:9995;background:rgba(6,14,28,.42);
+#vt-backdrop{position:fixed;inset:0;z-index:9995;background:rgba(4,10,22,.55);
   opacity:0;pointer-events:none;transition:opacity .22s ease}
 #vt-backdrop.vt-show{opacity:1;pointer-events:auto}
 
@@ -100,6 +100,7 @@
 
 @media(max-width:480px){
   #vt-panel{right:8px;left:8px;bottom:8px;width:auto;height:72vh;max-height:none}
+  #vt-backdrop{background:rgba(3,8,18,.72)}
   #vt-launch{right:14px;bottom:14px}
 }
 @media(prefers-reduced-motion:reduce){.vt-typing i{animation:none}#vt-launch{transition:none}}
