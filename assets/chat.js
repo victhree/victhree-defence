@@ -22,7 +22,7 @@
   };
 
   var GREETING =
-    "Jai Hind! Good to have you here. May I know your name? And what is the biggest challenge you're facing in your preparation? Let's get your journey started.";
+    "Jai Hind! Good to have you here.\nMay I know your name? And what is the biggest challenge you're facing in your preparation?\nLet's get your journey started.";
 
   var CHIPS = [
     "My GS score won't improve",
@@ -35,6 +35,7 @@
   var history = [];
   var busy = false;
   var started = false;
+  var interacted = false;
 
   // ---------- build DOM ----------
   var launch = el("button", { id: "vt-launch", "aria-label": "Open the VicThree Defence mentor chat" });
@@ -92,9 +93,19 @@
     setTimeout(function () { input.focus(); }, 60);
   }
   function close() { panel.hidden = true; launch.classList.remove("vt-hidden"); }
-  launch.addEventListener("click", open);
-  panel.querySelector(".vt-close").addEventListener("click", close);
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !panel.hidden) close(); });
+  launch.addEventListener("click", function () { interacted = true; open(); });
+  panel.querySelector(".vt-close").addEventListener("click", function () { interacted = true; close(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !panel.hidden) { interacted = true; close(); } });
+
+  // auto-open once per session, ~5s after landing (unless the visitor already acted)
+  function autoOpen() { if (!interacted && panel.hidden) open(); }
+  try {
+    if (!sessionStorage.getItem("vt_opened")) {
+      setTimeout(function () { autoOpen(); try { sessionStorage.setItem("vt_opened", "1"); } catch (e) {} }, 5000);
+    }
+  } catch (e) {
+    setTimeout(autoOpen, 5000);
+  }
 
   // ---------- chips ----------
   function renderChips() {
