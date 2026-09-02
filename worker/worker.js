@@ -145,7 +145,7 @@ export default {
     for (const model of MODELS) {
       const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${env.GEMINI_API_KEY}`;
       const ctl = new AbortController();
-      const to = setTimeout(() => ctl.abort(), 12000);   // never let one model hang the request
+      const to = setTimeout(() => ctl.abort(), 7000);   // never let one model hang the request
       let r;
       try {
         r = await fetch(url, {
