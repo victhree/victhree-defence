@@ -28,10 +28,9 @@ const ALLOWED_ORIGINS = [
 // Gemini models to try, in order. The Worker uses the first that your
 // account serves. Gemini 2.0 Flash is the intended default here.
 const MODELS = [
-  "gemini-2.5-flash-lite",
   "gemini-flash-lite-latest",
-  "gemini-2.5-flash",
-  "gemini-flash-latest"
+  "gemini-2.5-flash-lite",
+  "gemini-2.5-flash"
 ];
 
 /* ==================================================================
