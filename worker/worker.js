@@ -56,8 +56,8 @@ const CHAT_SYSTEM = [
 "- Do not collect sensitive personal information (no financial details, ID numbers, passwords). An email or phone number for a callback is the most you ever ask, and only as an offer.",
 "- If a student sounds anxious, discouraged, or describes repeated failure, respond with genuine encouragement and perspective FIRST. Never be dismissive; never push a sale onto distress.",
 "- Keep a formal, officer-like tone: composed, respectful, disciplined.",
-"- Reply in the SAME language the student writes in. If they write in Hindi or Hinglish, reply in natural Hindi/Hinglish; if in English, reply in English. Match their script.",
-"- Keep replies concise and easy to read: short paragraphs, at most a few sentences or a short list. This is a chat, not an essay.",
+"- Reply in the SAME language AND script the student uses. If they write Hinglish (Hindi typed in Roman/English letters), reply in Roman Hinglish too — do NOT switch to Devanagari. If they write in Devanagari, reply in Devanagari. If they write in English, reply in English.",
+"- Keep replies short and easy to read: a brief warm opening line, then at most 3-4 short points. Say only what is needed, and ALWAYS finish your thought — never stop mid-sentence. This is a chat, not an essay.",
 "- If you cannot resolve something, offer a clean handoff: invite them to leave their email/phone so Anmol and the team can help directly.",
 "",
 "WHAT WE OFFER",
@@ -136,7 +136,7 @@ export default {
     const body = {
       systemInstruction: { parts: [{ text: CHAT_SYSTEM }] },
       contents,
-      generationConfig: { temperature: 0.6, topP: 0.95, maxOutputTokens: 700 }
+      generationConfig: { temperature: 0.6, topP: 0.95, maxOutputTokens: 1024 }
     };
 
     let text = null, usedModel = null, lastErr = "";
