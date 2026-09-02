@@ -28,9 +28,10 @@ const ALLOWED_ORIGINS = [
 // Gemini models to try, in order. The Worker uses the first that your
 // account serves. Gemini 2.0 Flash is the intended default here.
 const MODELS = [
-  "gemini-3.6-flash",
   "gemini-flash-latest",
-  "gemini-2.5-flash"
+  "gemini-2.5-flash",
+  "gemini-3.6-flash",
+  "gemini-2.0-flash-001"
 ];
 
 /* ==================================================================
@@ -139,33 +140,39 @@ export default {
       generationConfig: { temperature: 0.6, topP: 0.95, maxOutputTokens: 1024 }
     };
 
-    let text = null, usedModel = null, lastErr = "";
+    let text = null, usedModel = null;
+    const errs = [];
     for (const model of MODELS) {
       const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${env.GEMINI_API_KEY}`;
+      const ctl = new AbortController();
+      const to = setTimeout(() => ctl.abort(), 12000);   // never let one model hang the request
       let r;
       try {
         r = await fetch(url, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(body)
+          body: JSON.stringify(body),
+          signal: ctl.signal
         });
       } catch (e) {
-        lastErr = "fetch failed for " + model;
+        clearTimeout(to);
+        errs.push(model + ": " + (e && e.name === "AbortError" ? "timeout" : "fetch-failed"));
         continue;
       }
+      clearTimeout(to);
       if (!r.ok) {
-        lastErr = model + " → " + r.status + ": " + (await r.text()).slice(0, 300);
+        errs.push(model + ": " + r.status + " " + (await r.text()).slice(0, 110));
         continue;
       }
       const d = await r.json();
       const parts = d && d.candidates && d.candidates[0] && d.candidates[0].content && d.candidates[0].content.parts;
       const t = Array.isArray(parts) ? parts.map((p) => (p && p.text) || "").join("").trim() : "";
       if (t) { text = t; usedModel = model; break; }
-      lastErr = "empty response from " + model;
+      errs.push(model + ": empty");
     }
 
     if (!text) {
-      return json({ error: "Assistant unavailable", detail: lastErr }, 502, cors);
+      return json({ error: "Assistant unavailable", detail: errs.join(" | ") }, 502, cors);
     }
     return json({ reply: text, _model: usedModel }, 200, cors);
   }
