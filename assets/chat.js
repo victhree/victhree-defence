@@ -22,7 +22,7 @@
   };
 
   var GREETING =
-    "Namaste. I'm the VicThree Defence study mentor. Tell me where your preparation feels stuck — GS, English, current affairs, staying consistent, the SSB, or choosing between CDS and AFCAT — and I'll help you think it through. What are you working on?";
+    "Jai Hind! 🇮🇳 Before we begin, may I know your name? And tell me — what is the biggest challenge you are facing in your preparation right now? Let's get your journey started.";
 
   var CHIPS = [
     "My GS score won't improve",
@@ -43,8 +43,7 @@
   var panel = el("div", { id: "vt-panel", role: "dialog", "aria-label": "VicThree Defence mentor chat", hidden: "" });
   panel.innerHTML =
     '<div class="vt-head">' +
-      '<span class="vt-badge">' + icon("shield") + '</span>' +
-      '<div class="vt-head-t"><strong>VicThree Mentor</strong><span>CDS · AFCAT · SSB guidance</span></div>' +
+      '<img class="vt-head-banner" src="assets/banner-wordmark.png?v=19" alt="VicThree Defence by Anmol Sharma">' +
       '<button class="vt-close" aria-label="Close chat">&times;</button>' +
     '</div>' +
     '<div class="vt-msgs" id="vt-msgs" aria-live="polite"></div>' +
@@ -112,7 +111,7 @@
   // ---------- messages ----------
   function addBot(text) {
     var d = el("div", { "class": "vt-msg vt-bot" });
-    d.innerHTML = linkify(text);
+    d.innerHTML = format(text);
     msgs.appendChild(d); scrollDown(); return d;
   }
   function addUser(text) {
@@ -204,11 +203,17 @@
   function esc(s) {
     return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   }
-  function linkify(text) {
-    var safe = esc(text);
-    return safe.replace(/(https?:\/\/[^\s<]+[^\s<.,;:!?)])/g, function (u) {
+  // Escape HTML, then render light markdown as clean text (no stray * symbols).
+  function format(text) {
+    var s = esc(text);
+    s = s.replace(/\*\*([^*\n]+)\*\*/g, "<strong>$1</strong>");   // **bold** -> bold
+    s = s.replace(/__([^_\n]+)__/g, "<strong>$1</strong>");        // __bold__ -> bold
+    s = s.replace(/^[ \t]*[\*\-•]\s+/gm, "• ");                // *, - bullets -> •
+    s = s.replace(/\*/g, "");                                        // drop any leftover asterisks
+    s = s.replace(/(https?:\/\/[^\s<]+[^\s<.,;:!?)])/g, function (u) {
       return '<a href="' + u + '" target="_blank" rel="noopener">' + u + "</a>";
     });
+    return s;
   }
   function icon(name) {
     if (name === "chat") return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 10h8M8 13h5"/></svg>';
