@@ -586,3 +586,42 @@ section{padding:74px 0;position:relative}
 .join-cap p{margin:0;color:var(--ink-soft);font-size:.98rem;line-height:1.5;max-width:54ch}
 .join-cap .btn{flex:0 0 auto}
 @media(max-width:600px){.join-cap .jc-inner{flex-direction:column;align-items:flex-start;gap:14px}}
+
+/* ============================================================
+   GS COURSE LANDING PAGE (gs-course.html) — scoped additions only.
+   Uses existing tokens. Does not restyle any shared class.
+   ============================================================ */
+
+/* minimal nav: brand + one CTA, always visible incl. mobile */
+.gs-nav .nav-brand{opacity:1;visibility:visible;margin-right:auto}
+.gs-nav .nav-cta{display:inline-block}
+@media(max-width:700px){.gs-nav .nav-cta{display:inline-block;padding:9px 14px;font-size:.7rem}}
+@media(max-width:400px){.gs-nav .nav-cta{font-size:.62rem;padding:8px 11px;letter-spacing:.03em}}
+
+/* the five steps, one line each, under the flow chips (navy band) */
+.gs-flowsteps{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;max-width:1000px;margin:0 auto 40px}
+.gs-fstep{border-top:1px solid var(--line-dark);padding-top:14px}
+.gs-fstep .fk{font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:.66rem;color:var(--gold-bright)}
+.gs-fstep p{margin:7px 0 0;font-family:var(--sans);font-size:.88rem;line-height:1.5;color:var(--gold-soft)}
+@media(max-width:900px){.gs-flowsteps{grid-template-columns:repeat(2,1fr);max-width:620px}}
+@media(max-width:520px){.gs-flowsteps{grid-template-columns:1fr}}
+
+/* evidence slot: paper analysis / sample of teaching / results (cream) */
+.gs-slot{max-width:820px;margin:44px auto 0;background:#fff;border:1px dashed var(--line-2);border-radius:16px;padding:clamp(24px,4vw,34px);text-align:center}
+.gs-slot .gs-k{font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:.14em;font-size:.7rem;color:var(--gold);margin-bottom:12px}
+.gs-slot p{margin:0 0 10px}
+.gs-slot p:last-child{margin:0}
+.gs-slot .cap{font-family:var(--sans);font-size:.88rem;color:var(--ink-soft);line-height:1.55}
+.gs-strip{margin-top:44px}
+
+/* trial entry callout, sits above the three plans */
+.gs-trial{max-width:820px;margin:0 auto 42px;background:var(--navy);border:1px solid var(--navy-2);border-radius:18px;padding:clamp(26px,4.5vw,40px);text-align:center;box-shadow:var(--shadow-lg)}
+.gs-trial .gs-k{font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;color:var(--gold-bright);margin-bottom:12px}
+.gs-trial h3{color:#fff;font-size:clamp(1.25rem,3.4vw,1.85rem);line-height:1.2;margin:0 0 12px}
+.gs-trial p{color:var(--gold-soft);font-family:var(--sans);font-size:.98rem;line-height:1.55;max-width:54ch;margin:0 auto 24px}
+.gs-trial .gs-sec{display:block;margin-top:16px;font-family:var(--sans);font-size:.85rem;color:var(--gold-soft);text-decoration-color:rgba(233,220,184,.4)}
+.gs-trial .gs-sec:hover{color:#fff}
+
+/* footer trimmed to brand + contact on this page */
+.gs-foot .foot-grid{grid-template-columns:1.6fr 1fr;margin-bottom:30px}
+@media(max-width:560px){.gs-foot .foot-grid{grid-template-columns:1fr}}
