@@ -615,7 +615,7 @@ section{padding:74px 0;position:relative}
 .gs-strip{margin-top:44px}
 
 /* trial entry callout, sits above the three plans */
-.gs-trial{max-width:820px;margin:0 auto 42px;background:var(--navy);border:1px solid var(--navy-2);border-radius:18px;padding:clamp(26px,4.5vw,40px);text-align:center;box-shadow:var(--shadow-lg)}
+.gs-trial{max-width:820px;margin:0 auto 42px;background:var(--navy);color:#fff;border:1px solid var(--navy-2);border-radius:18px;padding:clamp(26px,4.5vw,40px);text-align:center;box-shadow:var(--shadow-lg)}
 .gs-trial .gs-k{font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:.16em;font-size:.7rem;color:var(--gold-bright);margin-bottom:12px}
 .gs-trial h3{color:#fff;font-size:clamp(1.25rem,3.4vw,1.85rem);line-height:1.2;margin:0 0 12px}
 .gs-trial p{color:var(--gold-soft);font-family:var(--sans);font-size:.98rem;line-height:1.55;max-width:54ch;margin:0 auto 24px}
