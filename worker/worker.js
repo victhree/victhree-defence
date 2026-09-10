@@ -22,6 +22,8 @@
 // Only these origins may call the Worker from a browser.
 const ALLOWED_ORIGINS = [
   "https://victhree.github.io",
+  "https://victhreedefence.com",
+  "https://www.victhreedefence.com",
   "http://localhost:8099"   // local testing; remove if you like
 ];
 
