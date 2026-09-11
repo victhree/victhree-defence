@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Payment received | VicThree Defence</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/shield-32.png?v=4">
+<meta name="theme-color" content="#0f2340">
+<link rel="stylesheet" href="assets/styles.css?v=52">
+
+<!-- Paste the SAME Meta Pixel ID here as on gs-course.html -->
+<script>
+window.VT = { PIXEL_ID: "PASTE_PIXEL_ID" };
+</script>
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+(function(){
+  var id = window.VT && window.VT.PIXEL_ID;
+  if (!id || id.indexOf('PASTE') !== -1) return;
+  fbq('init', id);
+  fbq('track', 'PageView');
+  // Only count a Purchase when Razorpay actually sent us back a payment id.
+  var q = new URLSearchParams(location.search);
+  if (q.get('razorpay_payment_id')) {
+    fbq('track', 'Purchase', {content_name:'GS Geography Trial', value:999, currency:'INR'});
+  }
+})();
+</script>
+<style>
+  .ty-wrap{min-height:70vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:60px 22px}
+  .ty-card{max-width:560px;background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-lg);padding:clamp(30px,6vw,54px)}
+  .ty-tick{width:66px;height:66px;border-radius:50%;background:rgba(63,107,58,.14);color:#3f6b3a;display:flex;align-items:center;justify-content:center;margin:0 auto 22px}
+  .ty-tick svg{width:34px;height:34px}
+  .ty-card h1{font-size:clamp(1.5rem,4vw,2.1rem);margin:0 0 .3em}
+  .ty-card p{color:var(--ink-soft);margin:0 0 1em}
+</style>
+</head>
+<body>
+
+<header class="nav gs-nav">
+  <div class="wrap">
+    <a class="nav-brand" href="index.html" aria-label="VicThree Defence home">
+      <img src="assets/banner-nav.png?v=18" alt="VicThree Defence">
+    </a>
+  </div>
+</header>
+
+<main class="ty-wrap">
+  <div class="ty-card">
+    <div class="ty-tick" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
+    </div>
+    <h1>Payment received. Welcome in.</h1>
+    <p>Thank you for starting the &#8377;999 Geography trial. Your payment is confirmed.</p>
+    <p><strong>What happens next:</strong> Anmol will personally message you on WhatsApp shortly with your Day&nbsp;1 access and the trial schedule. Please keep an eye on WhatsApp.</p>
+    <p>If you don't hear back within a few hours, reply to your payment confirmation email or message us on Telegram.</p>
+    <a class="btn primary" href="gs-course.html" style="margin-top:8px">Back to the course page</a>
+  </div>
+</main>
+
+</body>
+</html>
