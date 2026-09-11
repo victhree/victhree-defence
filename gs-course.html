@@ -14,6 +14,41 @@
 <meta property="og:description" content="Taught, tested and mentored every day. Start with a one-week Geography trial for &#8377;999.">
 <meta property="og:image" content="assets/banner.png?v=4">
 <link rel="stylesheet" href="assets/styles.css?v=52">
+
+<!-- =========================================================================
+     VICTHREE AD CONFIG  —  PASTE YOUR 3 VALUES BELOW, THEN DEPLOY.
+     Until real values are pasted, the buttons stay inert and NO pixel fires,
+     so it is safe to leave this on the live site while you gather them.
+     ========================================================================= -->
+<script>
+window.VT = {
+  // 1) Meta Pixel ID — Events Manager → your Pixel → the ~15-16 digit number
+  PIXEL_ID:  "PASTE_PIXEL_ID",
+  // 2) Razorpay ₹999 Payment Link — Razorpay → Payment Links → your link URL
+  RZP_LINK:  "PASTE_RAZORPAY_LINK",
+  // 3) WhatsApp number — country code + number, DIGITS ONLY, no + or spaces (e.g. 9198XXXXXXXX)
+  WA_NUMBER: "PASTE_WHATSAPP_NUMBER",
+  // Pre-filled first WhatsApp message (edit the wording freely)
+  WA_MSG:    "Hi Anmol, I saw your VicThree GS course and I'd like to start / know more. My target exam is ____ and this is attempt number ____."
+};
+</script>
+
+<!-- ===== Meta Pixel base code (fires only once a real PIXEL_ID is pasted) ===== -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+(function(){
+  var id = window.VT && window.VT.PIXEL_ID;
+  if (id && id.indexOf('PASTE') === -1) {
+    fbq('init', id);
+    fbq('track', 'PageView');
+    fbq('track', 'ViewContent', {content_name:'GS Geography Trial', value:999, currency:'INR'});
+  }
+})();
+</script>
 </head>
 <body>
 
@@ -23,7 +58,7 @@
     <a class="nav-brand" href="#top" aria-label="VicThree Defence GS course">
       <img src="assets/banner-nav.png?v=18" alt="VicThree Defence">
     </a>
-    <a class="nav-cta" href="https://t.me/anmolxsharma" target="_blank" rel="noopener">Start the &#8377;999 trial</a>
+    <a class="nav-cta" href="#" data-cta="checkout">Start the &#8377;999 trial</a>
   </div>
 </header>
 
@@ -41,7 +76,8 @@
       <p class="hero-sub">A guided 90-day General Studies course for CDS and AFCAT, taught, tested and mentored every day. The way in is a one-week Geography trial for &#8377;999.</p>
       <p class="built">Taught by <b>Anmol Sharma</b>, All India Rank 32, UPSC CDS 2018.</p>
       <div class="hero-cta">
-        <a class="btn primary" href="https://t.me/anmolxsharma" target="_blank" rel="noopener">Start the &#8377;999 Geography trial</a>
+        <a class="btn primary" href="#" data-cta="checkout">Start the &#8377;999 Geography trial</a>
+        <a class="btn ghost" href="#" data-cta="whatsapp">Talk on WhatsApp first</a>
         <a class="btn ghost" href="#system">See how the 90 days work</a>
       </div>
     </div>
@@ -140,7 +176,7 @@
     </div>
 
     <div class="course-cta">
-      <a class="btn primary" href="https://t.me/anmolxsharma" target="_blank" rel="noopener">Start the &#8377;999 Geography trial</a>
+      <a class="btn primary" href="#" data-cta="checkout">Start the &#8377;999 Geography trial</a>
     </div>
   </div>
 </section>
@@ -279,8 +315,8 @@
       <div class="gs-k">The way in</div>
       <h3>Start with the &#8377;999 Geography trial,<br>then choose your plan.</h3>
       <p>One week, one subject, the full system running exactly as it does for enrolled students. If it is not for you, you simply do not continue.</p>
-      <a class="btn primary" href="https://t.me/anmolxsharma" target="_blank" rel="noopener">Start the &#8377;999 Geography trial</a>
-      <a class="gs-sec" href="https://t.me/anmolxsharma" target="_blank" rel="noopener">Or talk to us first</a>
+      <a class="btn primary" href="#" data-cta="checkout">Start the &#8377;999 Geography trial</a>
+      <a class="gs-sec" href="#" data-cta="whatsapp">Or talk to us on WhatsApp first</a>
     </div>
 
     <div class="plan-grid">
@@ -304,7 +340,7 @@
         <div class="plan-foot">
           <!-- [INSERT Live Batch fee] -> replace the line below with the real figure -->
           <div class="plan-fee">Request fees</div>
-          <a class="btn ghost dark" href="https://t.me/anmolxsharma" target="_blank" rel="noopener">Request fees</a>
+          <a class="btn ghost dark" href="#" data-cta="whatsapp">Request fees</a>
         </div>
       </div>
 
@@ -325,7 +361,7 @@
         <div class="plan-foot">
           <!-- [INSERT Self-Paced fee] -> replace the line below with the real figure -->
           <div class="plan-fee">Request fees</div>
-          <a class="btn ghost dark" href="https://t.me/anmolxsharma" target="_blank" rel="noopener">Request fees</a>
+          <a class="btn ghost dark" href="#" data-cta="whatsapp">Request fees</a>
         </div>
       </div>
 
@@ -346,7 +382,7 @@
         <div class="plan-foot">
           <!-- [INSERT 1-on-1 fee] -> replace the line below with the real figure -->
           <div class="plan-fee">Request fees</div>
-          <a class="btn ghost dark" href="https://t.me/anmolxsharma" target="_blank" rel="noopener">Request fees</a>
+          <a class="btn ghost dark" href="#" data-cta="whatsapp">Request fees</a>
         </div>
       </div>
 
@@ -413,7 +449,7 @@
     <p class="warn">Stop preparing randomly.<br class="m-brk">Your attempts are too costly for trial and error.</p>
     <h2>Start with the &#8377;999 Geography trial.<br>Commit when you are convinced.</h2>
     <p class="lede">One week. The notes, the lectures, the live doubt session and a test. Message us with your target exam and attempt, and we will guide you in.</p>
-    <a class="btn primary" href="https://t.me/anmolxsharma" target="_blank" rel="noopener">Start the &#8377;999 Geography trial</a>
+    <a class="btn primary" href="#" data-cta="checkout">Start the &#8377;999 Geography trial</a>
     <p class="join-label">Join the Journey</p>
     <nav class="socials" aria-label="VicThree Defence channels">
       <a href="https://youtube.com/@victhreedefence" target="_blank" rel="noopener" title="YouTube" aria-label="YouTube"><svg viewBox="0 0 24 24" width="27" height="27" fill="currentColor" aria-hidden="true"><path d="M23 7.5a3 3 0 0 0-2.1-2.1C19 4.9 12 4.9 12 4.9s-7 0-8.9.5A3 3 0 0 0 1 7.5 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.5a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5A3 3 0 0 0 23 16.5 31 31 0 0 0 23.5 12 31 31 0 0 0 23 7.5zM9.8 15.3V8.7l5.7 3.3-5.7 3.3z"/></svg></a>
@@ -448,5 +484,42 @@
 </footer>
 
 <script src="assets/main.js?v=6"></script>
+
+<!-- ===== VicThree CTA wiring: point buttons at Razorpay / WhatsApp + fire Lead ===== -->
+<script>
+(function(){
+  var VT = window.VT || {};
+  var pixelReady = VT.PIXEL_ID && VT.PIXEL_ID.indexOf('PASTE') === -1;
+  var haveRZP = VT.RZP_LINK && VT.RZP_LINK.indexOf('PASTE') === -1;
+  var haveWA  = VT.WA_NUMBER && VT.WA_NUMBER.indexOf('PASTE') === -1;
+  var waURL = haveWA
+    ? 'https://wa.me/' + VT.WA_NUMBER.replace(/\D/g,'') + '?text=' + encodeURIComponent(VT.WA_MSG || '')
+    : null;
+
+  function fireLead(method){
+    if (pixelReady && window.fbq) {
+      fbq('track','Lead',{content_name:'GS Geography Trial', method:method, value:999, currency:'INR'});
+    }
+  }
+
+  // Temporary fallback: until real Razorpay/WhatsApp values are pasted, every CTA
+  // opens Telegram (same as the page did before), so nothing is ever a dead button.
+  var TELEGRAM = 'https://t.me/anmolxsharma';
+
+  // ₹999 checkout buttons -> Razorpay Payment Link (same tab, so it can redirect to thank-you.html)
+  document.querySelectorAll('[data-cta="checkout"]').forEach(function(el){
+    el.setAttribute('href', haveRZP ? VT.RZP_LINK : TELEGRAM);
+    if (!haveRZP){ el.setAttribute('target','_blank'); el.setAttribute('rel','noopener'); }
+    el.addEventListener('click', function(){ fireLead('checkout'); });
+  });
+
+  // WhatsApp buttons -> wa.me with pre-filled message (new tab)
+  document.querySelectorAll('[data-cta="whatsapp"]').forEach(function(el){
+    el.setAttribute('href', waURL || TELEGRAM);
+    el.setAttribute('target','_blank'); el.setAttribute('rel','noopener');
+    el.addEventListener('click', function(){ fireLead('whatsapp'); });
+  });
+})();
+</script>
 </body>
 </html>
