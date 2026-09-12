@@ -54,6 +54,7 @@
       track.appendChild(frag);
     }
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    var pxs = parseFloat(marquee.getAttribute('data-pxs')); // fixed pixels/second (width-independent)
     var speed = parseFloat(marquee.getAttribute('data-speed')) || 100; // seconds per set
     var half = 0;
     function measure() { half = track.scrollWidth / 2; }
@@ -81,7 +82,7 @@
       var dt = (ts - last) / 1000; last = ts;
       if (dt > 0.1) dt = 0.016; // tab was backgrounded — avoid a big jump
       if (!paused && half > 0) {
-        marquee.scrollLeft += (half / speed) * dt;
+        marquee.scrollLeft += (pxs || (half / speed)) * dt;
         wrapHigh();
       }
       requestAnimationFrame(step);
