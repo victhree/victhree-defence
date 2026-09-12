@@ -589,6 +589,28 @@ section{padding:74px 0;position:relative}
 .join-cap .btn{flex:0 0 auto}
 @media(max-width:600px){.join-cap .jc-inner{flex-direction:column;align-items:flex-start;gap:14px}}
 
+/* ===== Reviews: Before / After cards (Alpha 15) ===== */
+.ba-grid{display:flex;flex-direction:column;gap:22px;max-width:900px;margin:0 auto}
+.ba-card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+.ba-head{display:flex;align-items:center;gap:13px;padding:15px 20px;border-bottom:1px solid var(--line)}
+.ba-av{flex:0 0 auto;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--navy),var(--navy-2));color:var(--gold-soft);font-family:var(--serif);font-weight:800;font-size:1.15rem}
+.ba-id{flex:1;min-width:0;line-height:1.3}
+.ba-name{display:block;font-family:var(--serif);font-weight:800;color:var(--navy);font-size:1.05rem}
+.ba-meta{display:block;font-family:var(--sans);font-size:.82rem;color:var(--ink-soft)}
+.ba-batch{flex:0 0 auto;font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:.6rem;
+  color:var(--gold);background:rgba(184,145,47,.1);border:1px solid rgba(184,145,47,.35);border-radius:20px;padding:5px 10px}
+.ba-panels{display:flex}
+.ba-col{flex:1;padding:20px}
+.ba-col p{margin:0;font-size:.95rem;line-height:1.55}
+.ba-tag{display:inline-block;font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:.6rem;padding:4px 10px;border-radius:20px;margin-bottom:11px}
+.ba-before{background:var(--paper-2);color:var(--ink)}
+.ba-before .ba-tag{color:var(--danger);background:rgba(162,59,46,.1);border:1px solid rgba(162,59,46,.3)}
+.ba-after{background:linear-gradient(160deg,var(--navy),var(--navy-3))}
+.ba-after p{color:#e8edf4}
+.ba-after .ba-tag{color:var(--navy);background:var(--gold);border:1px solid var(--gold)}
+@media(max-width:700px){.ba-panels{flex-direction:column}}
+
 /* ============================================================
    GS COURSE LANDING PAGE (gs-course.html) — scoped additions only.
    Uses existing tokens. Does not restyle any shared class.
