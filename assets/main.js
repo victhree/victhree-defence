@@ -41,11 +41,20 @@
   var yr = document.getElementById('yr');
   if (yr) yr.textContent = String(new Date().getFullYear());
 
-  // --- gallery marquee: auto-scroll + manual drag/swipe ---
-  var marquee = document.querySelector('.marquee');
-  var track = marquee && marquee.querySelector('.marquee-track');
-  if (marquee && track) {
+  // --- marquees: auto-scroll + manual drag/swipe (gallery + reviews) ---
+  function initMarquee(marquee) {
+    var track = marquee.querySelector('.marquee-track');
+    if (!track) return;
+    // duplicate the set once so the loop is seamless (reviews are not pre-duplicated)
+    if (marquee.hasAttribute('data-clone')) {
+      var frag = document.createDocumentFragment();
+      Array.prototype.forEach.call(track.children, function (node) {
+        var c = node.cloneNode(true); c.setAttribute('aria-hidden', 'true'); frag.appendChild(c);
+      });
+      track.appendChild(frag);
+    }
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    var speed = parseFloat(marquee.getAttribute('data-speed')) || 100; // seconds per set
     var half = 0;
     function measure() { half = track.scrollWidth / 2; }
     measure();
@@ -66,13 +75,13 @@
       resumeTimer = setTimeout(function () { paused = false; last = null; }, 1400);
     }
 
-    // auto-scroll: cover one full set in ~100s, matching the old marquee pace
+    // auto-scroll: cover one full set in ~`speed` seconds
     function step(ts) {
       if (last == null) last = ts;
       var dt = (ts - last) / 1000; last = ts;
       if (dt > 0.1) dt = 0.016; // tab was backgrounded — avoid a big jump
       if (!paused && half > 0) {
-        marquee.scrollLeft += (half / 100) * dt;
+        marquee.scrollLeft += (half / speed) * dt;
         wrapHigh();
       }
       requestAnimationFrame(step);
@@ -106,6 +115,7 @@
     marquee.addEventListener('pointerup', endDrag);
     marquee.addEventListener('pointercancel', endDrag);
   }
+  Array.prototype.forEach.call(document.querySelectorAll('.marquee'), initMarquee);
 
   // --- comparison table: one-time nudge so people notice it scrolls right ---
   var ctable = document.querySelector('.ctable-wrap');
