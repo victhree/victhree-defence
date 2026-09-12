@@ -591,7 +591,7 @@ section{padding:74px 0;position:relative}
 
 /* ===== Reviews: Before / After cards (Alpha 15) ===== */
 .reviews-marquee .ba-card{flex:0 0 auto;width:min(600px,88vw)}
-.ba-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:8px;box-shadow:var(--shadow)}
+.ba-card{background:rgba(255,255,255,.5);-webkit-backdrop-filter:blur(16px) saturate(1.2);backdrop-filter:blur(16px) saturate(1.2);border:1px solid rgba(255,255,255,.65);border-radius:22px;padding:8px;box-shadow:var(--shadow)}
 .ba-head{display:flex;align-items:center;gap:14px;padding:16px 16px 14px}
 .ba-av{flex:0 0 auto;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;
   background:linear-gradient(150deg,var(--navy-2),var(--navy));color:var(--gold-soft);font-family:var(--serif);font-weight:800;font-size:1.25rem;
