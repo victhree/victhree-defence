@@ -614,12 +614,6 @@ section{padding:74px 0;position:relative}
 .ba-col p.ba-quote{font-family:var(--serif);font-weight:800;font-size:1.22rem;line-height:1.38;margin:0 0 13px}
 .ba-before p.ba-quote{color:var(--navy)}
 .ba-after p.ba-quote{color:#fff}
-/* CSS-transform marquee (reliable auto-scroll, pauses on hover) */
-.css-marquee{overflow:hidden;cursor:default}
-.css-marquee .marquee-track{width:max-content;animation:baMarquee 90s linear infinite;will-change:transform}
-.css-marquee:hover .marquee-track{animation-play-state:paused}
-@keyframes baMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@media(prefers-reduced-motion:reduce){.css-marquee .marquee-track{animation:none}}
 @media(max-width:700px){
   .ba-panels{flex-direction:column;gap:10px}
   .ba-col p.ba-quote{font-size:1.12rem}
