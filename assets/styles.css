@@ -591,7 +591,9 @@ section{padding:74px 0;position:relative}
 
 /* ===== Reviews: Before / After cards (Alpha 15) ===== */
 .reviews-marquee .ba-card{flex:0 0 auto;width:min(600px,88vw)}
-.ba-card{background:rgba(255,255,255,.5);-webkit-backdrop-filter:blur(16px) saturate(1.2);backdrop-filter:blur(16px) saturate(1.2);border:1px solid rgba(255,255,255,.65);border-radius:22px;padding:8px;box-shadow:var(--shadow)}
+.ba-card{position:relative;overflow:hidden;background:rgba(255,255,255,.5);-webkit-backdrop-filter:blur(16px) saturate(1.2);backdrop-filter:blur(16px) saturate(1.2);border:1px solid rgba(255,255,255,.55);border-radius:22px;padding:8px;box-shadow:var(--shadow),inset 2px 2px 2px rgba(255,255,255,.65),inset -2px -3px 5px rgba(15,35,64,.06)}
+/* subtle gloss: light falling across the top-left edge */
+.ba-card::before{content:"";position:absolute;top:0;left:0;right:0;height:60%;pointer-events:none;z-index:5;border-radius:22px 22px 0 0;background:linear-gradient(123deg,rgba(255,255,255,.34) 0%,rgba(255,255,255,.06) 13%,rgba(255,255,255,0) 28%)}
 .ba-head{display:flex;align-items:center;gap:14px;padding:16px 16px 14px}
 .ba-av{flex:0 0 auto;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;
   background:linear-gradient(150deg,var(--navy-2),var(--navy));color:var(--gold-soft);font-family:var(--serif);font-weight:800;font-size:1.25rem;
