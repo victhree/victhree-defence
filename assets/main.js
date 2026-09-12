@@ -59,6 +59,7 @@
     var half = 0;
     function measure() { half = track.scrollWidth / 2; }
     measure();
+    var pos = marquee.scrollLeft; // float position; scrollLeft rounds to whole px, so we never read it back
     window.addEventListener('load', measure);
     window.addEventListener('resize', measure);
     // re-measure as images finish loading (layout can shift)
@@ -82,8 +83,9 @@
       var dt = (ts - last) / 1000; last = ts;
       if (dt > 0.1) dt = 0.016; // tab was backgrounded — avoid a big jump
       if (!paused && half > 0) {
-        marquee.scrollLeft += (pxs || (half / speed)) * dt;
-        wrapHigh();
+        pos += (pxs || (half / speed)) * dt;
+        if (pos >= half) pos -= half;
+        marquee.scrollLeft = pos; // accumulate the fraction ourselves so slow speeds still advance
       }
       requestAnimationFrame(step);
     }
@@ -93,7 +95,7 @@
     marquee.addEventListener('wheel', function () { pause(); resumeSoon(); }, { passive: true });
     marquee.addEventListener('touchstart', pause, { passive: true });
     marquee.addEventListener('touchend', resumeSoon, { passive: true });
-    marquee.addEventListener('scroll', wrapHigh, { passive: true });
+    marquee.addEventListener('scroll', function () { if (paused) pos = marquee.scrollLeft; wrapHigh(); }, { passive: true });
 
     // mouse drag-to-scroll (touch is handled by native scrolling)
     var down = false, startX = 0, startLeft = 0;
@@ -110,7 +112,7 @@
         if (target < 0) { target += half; startLeft += half; }
         else if (target >= half) { target -= half; startLeft -= half; }
       }
-      marquee.scrollLeft = target;
+      marquee.scrollLeft = target; pos = target;
     });
     function endDrag() { if (!down) return; down = false; marquee.classList.remove('dragging'); resumeSoon(); }
     marquee.addEventListener('pointerup', endDrag);
