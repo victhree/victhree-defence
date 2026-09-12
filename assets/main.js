@@ -56,6 +56,19 @@
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
     var pxs = parseFloat(marquee.getAttribute('data-pxs')); // fixed pixels/second (width-independent)
     var speed = parseFloat(marquee.getAttribute('data-speed')) || 100; // seconds per set
+
+    // CSS-transform mode: rock-solid auto-scroll that does not rely on rAF/scrollLeft
+    if (marquee.classList.contains('css-marquee')) {
+      function setDur() {
+        var setW = track.scrollWidth / 2;
+        if (setW > 0) track.style.animationDuration = (setW / (pxs || 22)) + 's';
+      }
+      setDur();
+      window.addEventListener('load', setDur);
+      window.addEventListener('resize', setDur);
+      return;
+    }
+
     var half = 0;
     function measure() { half = track.scrollWidth / 2; }
     measure();
