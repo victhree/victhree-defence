@@ -787,3 +787,9 @@ section{padding:74px 0;position:relative}
 .full-review .fv-rs{font-family:var(--sans);font-size:.79rem;color:var(--ink-soft);margin-top:3px;line-height:1.4}
 .full-review p{font-family:var(--sans);font-size:.95rem;line-height:1.65;color:var(--ink-soft);margin:0 0 12px}
 .full-review p:last-child{margin:0}
+
+/* footer refund-policy block: understated, matches the footer */
+.foot-terms{border-top:1px solid var(--line-dark);margin-top:34px;padding-top:22px;max-width:none}
+.foot-terms h4{font-family:var(--sans);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem;color:var(--gold);margin:0 0 12px}
+.foot-terms p{font-family:var(--sans);font-size:.8rem;line-height:1.6;color:rgba(233,220,184,.6);margin:0 0 10px;max-width:88ch}
+.foot-terms p:last-child{margin:0}
