@@ -751,7 +751,7 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
         <ul>
           <li><a href="mailto:victhreeacademy@gmail.com">victhreeacademy@gmail.com</a></li>
           <li><a href="https://wa.me/918368376945" target="_blank" rel="noopener">WhatsApp +91 83683 76945</a></li>
-          <li><a href="https://t.me/anmolxsharma" target="_blank" rel="noopener">Telegram (fastest reply)</a></li>
+          <li><a href="https://t.me/anmolxsharma" target="_blank" rel="noopener">Telegram</a></li>
           <li><a href="https://www.instagram.com/victhreedefence" target="_blank" rel="noopener">Instagram</a></li>
           <li><a href="https://youtube.com/@victhreedefence" target="_blank" rel="noopener">YouTube</a></li>
         </ul>
@@ -790,12 +790,12 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
   }
 
   // Temporary fallback: until real Razorpay/WhatsApp values are pasted, every CTA
-  // opens Telegram (same as the page did before), so nothing is ever a dead button.
+  // opens WhatsApp (or Telegram only if no WhatsApp number), so nothing is ever a dead button.
   var TELEGRAM = 'https://t.me/anmolxsharma';
 
   // ₹999 checkout buttons -> Razorpay Payment Link (same tab, so it can redirect to thank-you.html)
   document.querySelectorAll('[data-cta="checkout"]').forEach(function(el){
-    el.setAttribute('href', haveRZP ? VT.RZP_LINK : TELEGRAM);
+    el.setAttribute("href", haveRZP ? VT.RZP_LINK : (waURL || TELEGRAM));
     if (!haveRZP){ el.setAttribute('target','_blank'); el.setAttribute('rel','noopener'); }
     el.addEventListener('click', function(){ fireLead('checkout'); });
   });
