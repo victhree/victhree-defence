@@ -732,14 +732,16 @@ section{padding:74px 0;position:relative}
    credential bar along the bottom. Shared by both pages.
    ============================================================ */
 .vq-band{background:var(--navy-3);padding:0}
-.vq-card{position:relative;max-width:var(--maxw);margin:0 auto;min-height:440px;
+.vq-card{position:relative;max-width:var(--maxw);margin:0 auto;min-height:500px;
   overflow:hidden;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-3) 100%);
   display:flex;flex-direction:column;justify-content:flex-end}
 
 /* the portrait, anchored right, desaturated to match the brand */
 .vq-photo{position:absolute;top:0;right:0;bottom:0;width:52%;overflow:hidden}
 .vq-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;
-  filter:contrast(1.03);display:block}
+  filter:contrast(1.03);display:block;
+  -webkit-mask-image:linear-gradient(to bottom,#000 80%,transparent 100%);
+  mask-image:linear-gradient(to bottom,#000 80%,transparent 100%)}
 /* fallback while no portrait is supplied: a deliberate gold monogram */
 .vq-photo .vq-mono{width:100%;height:100%;display:flex;align-items:center;justify-content:center;
   background:radial-gradient(circle at 50% 40%,rgba(184,145,47,.20),transparent 62%);
@@ -768,7 +770,7 @@ section{padding:74px 0;position:relative}
 }
 @media(max-width:700px){
   .vq-card{min-height:0}
-  .vq-photo{position:relative;width:100%;height:270px}
+  .vq-photo{position:relative;width:100%;height:340px}
   .vq-photo img{object-position:center top}
   .vq-card::after{background:linear-gradient(180deg,rgba(15,35,64,.18) 0%,rgba(15,35,64,.78) 56%,var(--navy) 78%)}
   .vq-inner{max-width:none;padding-top:clamp(22px,4vw,30px)}
