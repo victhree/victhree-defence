@@ -738,8 +738,8 @@ section{padding:74px 0;position:relative}
 
 /* the portrait, anchored right, desaturated to match the brand */
 .vq-photo{position:absolute;top:0;right:0;bottom:0;width:52%;overflow:hidden}
-.vq-photo img{width:100%;height:100%;object-fit:cover;object-position:center 18%;
-  filter:grayscale(1) contrast(1.06);display:block}
+.vq-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;
+  filter:contrast(1.03);display:block}
 /* fallback while no portrait is supplied: a deliberate gold monogram */
 .vq-photo .vq-mono{width:100%;height:100%;display:flex;align-items:center;justify-content:center;
   background:radial-gradient(circle at 50% 40%,rgba(184,145,47,.20),transparent 62%);
@@ -769,7 +769,7 @@ section{padding:74px 0;position:relative}
 @media(max-width:700px){
   .vq-card{min-height:0}
   .vq-photo{position:relative;width:100%;height:270px}
-  .vq-photo img{object-position:center 16%}
+  .vq-photo img{object-position:center top}
   .vq-card::after{background:linear-gradient(180deg,rgba(15,35,64,.18) 0%,rgba(15,35,64,.78) 56%,var(--navy) 78%)}
   .vq-inner{max-width:none;padding-top:clamp(22px,4vw,30px)}
 }
@@ -782,7 +782,7 @@ section{padding:74px 0;position:relative}
 .full-review .fv-av{width:52px;height:52px;border-radius:50%;flex:none;background:var(--navy);
   color:var(--gold-bright);display:flex;align-items:center;justify-content:center;overflow:hidden;
   font-family:var(--serif);font-weight:800;font-size:1.2rem}
-.full-review .fv-av img{width:100%;height:100%;object-fit:cover;object-position:center 12%;filter:grayscale(1)}
+.full-review .fv-av img{width:100%;height:100%;object-fit:cover;object-position:center 15%}
 .full-review .fv-nm{font-family:var(--serif);font-weight:800;font-size:1.08rem;color:var(--navy);line-height:1.2}
 .full-review .fv-rs{font-family:var(--sans);font-size:.79rem;color:var(--ink-soft);margin-top:3px;line-height:1.4}
 .full-review p{font-family:var(--sans);font-size:.95rem;line-height:1.65;color:var(--ink-soft);margin:0 0 12px}
