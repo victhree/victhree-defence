@@ -30,13 +30,28 @@
 .player .demo-play .pp-btn svg{width:30px;height:30px;margin-left:4px;fill:#fff}
 .player .demo-play .pp-cap{font-family:var(--sans,Inter,Arial,sans-serif);font-size:13px;color:var(--gold-soft,#e9dcb8);letter-spacing:.04em}
 @media(max-width:820px){ .demo-cta{right:12px;bottom:12px;padding:11px 16px} }
+/* guided tour */
+.tour-spot{position:relative!important;z-index:950!important;box-shadow:0 0 0 9999px rgba(11,31,58,.66),0 0 0 3px var(--gold,#b8912f)!important;border-radius:12px}
+.tour-pop{position:fixed;z-index:1000;width:300px;max-width:calc(100vw - 28px);background:#fff;border:1px solid var(--line,#e2ddcd);border-radius:14px;box-shadow:0 18px 50px rgba(0,0,0,.35);padding:16px 18px;font-family:var(--sans,Inter,Arial,sans-serif);display:none}
+.tour-pop.on{display:block}
+.tour-pop.center{top:50%;left:50%;transform:translate(-50%,-50%);width:360px;text-align:center}
+.tour-pop h4{margin:0 0 6px;font-size:15px;font-weight:800;color:var(--navy,#0B1F3A)}
+.tour-pop p{margin:0 0 14px;font-size:13.5px;line-height:1.55;color:var(--ink,#1c2331)}
+.tour-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.tour-step{font-size:12px;color:var(--ink-soft,#4a5265);font-weight:700}
+.tour-btns{display:flex;gap:8px}
+.tour-btns button{font-family:inherit;font-weight:800;font-size:13px;border-radius:8px;padding:8px 13px;cursor:pointer;border:1.5px solid var(--navy,#0B1F3A);background:#fff;color:var(--navy,#0B1F3A)}
+.tour-btns button.primary{background:var(--gold,#b8912f);border-color:var(--gold,#b8912f);color:var(--navy,#0B1F3A)}
+.tour-pop .tour-cta{display:inline-block;margin-top:4px;background:var(--gold,#b8912f);color:var(--navy,#0B1F3A);font-weight:800;text-decoration:none;padding:11px 20px;border-radius:30px}
+.tour-skip{position:fixed;top:12px;right:14px;z-index:1001;background:rgba(11,31,58,.82);color:#fff;border:0;border-radius:20px;padding:8px 14px;font-family:var(--sans,Inter,Arial,sans-serif);font-weight:700;font-size:12.5px;cursor:pointer;display:none}
+.tour-skip.on{display:inline-block}
 </style>
 </head>
 <body class="has-sidenav">
 
 <!-- Desktop-only left navigation. -->
 <aside class="side-nav" aria-label="Main navigation">
-  <a class="sn-brand" href="#home"><img src="assets/portal-banner.jpg" alt="VicThree Defence — by Anmol Sharma"></a>
+  <a class="sn-brand" data-view="home" href="#home"><img src="assets/portal-banner.jpg" alt="VicThree Defence — by Anmol Sharma"></a>
   <nav class="sn-links">
     <a class="sn-link active" data-view="home" href="#home"><span class="sn-ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>Dashboard</a>
     <a class="sn-link" data-view="lectures" href="#lectures"><span class="sn-ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z"/></svg></span>Lectures</a>
@@ -59,7 +74,7 @@
 
 <header class="site-header">
   <div class="banner-wrap">
-    <a href="#home" class="banner-link" aria-label="VicThree Defence"><img src="assets/portal-banner.jpg" alt="VicThree Defence — by Anmol Sharma"></a>
+    <a href="#home" class="banner-link" data-view="home" aria-label="VicThree Defence"><img src="assets/portal-banner.jpg" alt="VicThree Defence — by Anmol Sharma"></a>
     <a class="hdr-action" href="gs-course.html">Exit demo</a>
   </div>
 </header>
@@ -67,7 +82,7 @@
 <main class="wrap" id="app">
 
   <div class="demo-note">
-    <b>This is a preview of the student portal.</b> The content here is sample content, shown so you can see exactly what you get inside. Click around: open Lectures, a topic video, Notes and Current Affairs. Nothing here needs a login.
+    <b>This is a preview of the student portal.</b> Sample content, so you can see exactly what you get inside. <a href="#" id="replayTour" style="color:var(--gold,#b8912f);font-weight:800;text-decoration:underline">Take the guided tour</a> or click around freely. Nothing here needs a login.
   </div>
 
   <!-- ===== HOME ===== -->
@@ -303,7 +318,6 @@
     home:'v-home', lectures:'v-lectures', geography:'v-geography',
     watch:'v-watch', notes:'v-notes', ca:'v-ca', ssb:'v-ssb'
   };
-  // which sidenav link to highlight for each view
   var navFor = { home:'home', lectures:'lectures', geography:'lectures', watch:'lectures', notes:'notes', ca:'ca', ssb:'ssb' };
 
   function show(name){
@@ -318,14 +332,17 @@
     window.scrollTo(0,0);
   }
 
+  // Free navigation (also used by the logo -> dashboard).
   document.addEventListener('click', function(e){
+    if (e.target.closest('.tour-pop') || e.target.closest('.tour-skip')) return;
     var t = e.target.closest('[data-view]');
     if(!t) return;
     e.preventDefault();
+    if (tourActive) endTour();
     show(t.getAttribute('data-view'));
   });
 
-  // Announcements bar: expand/collapse.
+  // Announcements expand/collapse.
   var annToggle = document.getElementById('annToggle');
   var annPanel = document.getElementById('annPanel');
   var annCaret = document.getElementById('annCaret');
@@ -338,7 +355,7 @@
     });
   }
 
-  // Vocab of the day rotates, like the real portal.
+  // Vocab of the day rotates.
   var VOCAB = [
     {w:'Ubiquitous', m:'present everywhere'},
     {w:'Alacrity',   m:'brisk and cheerful readiness'},
@@ -353,7 +370,95 @@
     }, 5000);
   }
 
+  /* ===================== GUIDED TOUR ===================== */
+  var STEPS = [
+    {center:true, title:"Welcome to your student portal", html:"A quick guided tour of what you get inside. Use <b>Next</b> to step through it, or Skip anytime."},
+    {view:'home', sel:'.prog-block', title:"Your progress", text:"Your course progress and study streak update automatically as you finish topics."},
+    {view:'home', sel:'.duo-tile.today', title:"Today's video", text:"One new topic opens every morning at 7 AM. This is where you start each day."},
+    {view:'home', sel:'.ann-collapse', title:"Announcements", text:"Batch updates, live-session timings and test dates land here."},
+    {view:'home', sel:'.tiles', title:"Everything in one place", text:"Lectures, Notes, Current Affairs and your SSB progress, each a click away."},
+    {view:'home', sel:'.home-rail', title:"Schedule and mock tests", text:"Your month at a glance, with the upcoming mock-test sessions."},
+    {view:'lectures', sel:'#v-lectures .tile', title:"Your subjects", text:"Start with Geography. More subjects open as the course rolls out."},
+    {view:'geography', sel:'#v-geography .topic-row', title:"Topic by topic", text:"Each topic unlocks day by day, so you always know exactly what to do next."},
+    {view:'watch', sel:'#v-watch .player', title:"Watch the lecture", text:"Focused daily lectures. Your progress ticks up as you watch."},
+    {view:'watch', sel:'#v-watch .watch-actions', title:"Notes and the test", text:"Open the topic's notes, or take its mock test, right from the lesson."},
+    {view:'notes', sel:'#v-notes .topic-list', title:"Notes for every topic", text:"Structured PDF notes, released the evening before each lecture."},
+    {view:'ca', sel:'#v-ca .topic-list', title:"Current affairs", text:"A monthly Defence Digest, tied back to the static syllabus."},
+    {center:true, title:"That's the tour", html:"This is exactly what opens up inside. Start with the two-week Geography trial for <b>&#8377;999</b> to get the real thing.", cta:true}
+  ];
+
+  var pop = document.createElement('div'); pop.className = 'tour-pop';
+  var skip = document.createElement('button'); skip.className = 'tour-skip'; skip.type='button'; skip.textContent = 'Skip tour';
+  document.body.appendChild(pop); document.body.appendChild(skip);
+
+  var idx = 0, tourActive = false, spotEl = null, token = 0;
+
+  function clearSpot(){ if (spotEl){ spotEl.classList.remove('tour-spot'); spotEl = null; } }
+
+  function place(target){
+    var pr = pop.getBoundingClientRect();
+    var r = target.getBoundingClientRect();
+    var vw = window.innerWidth, vh = window.innerHeight, gap = 12, pad = 12;
+    var top, left = Math.min(Math.max(r.left, pad), Math.max(pad, vw - pr.width - pad));
+    if (r.bottom + gap + pr.height <= vh - pad){ top = r.bottom + gap; }
+    else if (r.top - gap - pr.height >= pad){ top = r.top - gap - pr.height; }
+    else { top = Math.max(pad, (vh - pr.height)/2); }
+    pop.style.top = top + 'px'; pop.style.left = left + 'px';
+  }
+
+  function buildPop(s, centered){
+    pop.className = 'tour-pop on' + (centered ? ' center' : '');
+    pop.style.top = ''; pop.style.left = '';
+    var body = s.html ? s.html : (s.text || '');
+    var ctaHtml = s.cta ? '<p style="margin:0 0 14px"><a class="tour-cta" href="gs-course.html#trial">Start the &#8377;999 trial</a></p>' : '';
+    var nextLabel = (idx === STEPS.length - 1) ? 'Done' : 'Next';
+    pop.innerHTML =
+      '<h4>' + s.title + '</h4>' +
+      '<p>' + body + '</p>' + ctaHtml +
+      '<div class="tour-row"><span class="tour-step">Step ' + (idx+1) + ' of ' + STEPS.length + '</span>' +
+      '<span class="tour-btns">' +
+      (idx > 0 ? '<button type="button" data-tour="back">Back</button>' : '') +
+      '<button type="button" class="primary" data-tour="next">' + nextLabel + '</button>' +
+      '</span></div>';
+  }
+
+  function render(){
+    if (idx < 0) idx = 0;
+    if (idx > STEPS.length - 1){ endTour(); return; }
+    var s = STEPS[idx];
+    var my = ++token;                 // invalidate any pending async render
+    clearSpot();
+    if (s.view) show(s.view);
+    requestAnimationFrame(function(){
+      if (my !== token) return;       // a newer render superseded this one
+      if (s.center){ buildPop(s, true); return; }
+      var target = document.querySelector(s.sel);
+      var visible = target && target.getBoundingClientRect().width > 0;
+      if (!visible){ buildPop(s, true); return; }   // fallback: show centered, no spotlight
+      spotEl = target; target.classList.add('tour-spot');
+      try { target.scrollIntoView({block:'center', behavior:'instant'}); } catch(_) { target.scrollIntoView(); }
+      buildPop(s, false);
+      requestAnimationFrame(function(){ if (my === token) place(target); });
+    });
+  }
+
+  function startTour(){ tourActive = true; idx = 0; skip.classList.add('on'); render(); }
+  function endTour(){ tourActive = false; clearSpot(); token++; pop.className = 'tour-pop'; skip.classList.remove('on'); }
+
+  pop.addEventListener('click', function(e){
+    var b = e.target.closest('[data-tour]'); if(!b) return;
+    var act = b.getAttribute('data-tour');
+    if (act === 'next'){ if (idx >= STEPS.length - 1){ endTour(); return; } idx++; render(); }
+    else if (act === 'back'){ idx = Math.max(0, idx-1); render(); }
+  });
+  skip.addEventListener('click', endTour);
+  window.addEventListener('resize', function(){ if (tourActive && spotEl) place(spotEl); });
+
+  var replay = document.getElementById('replayTour');
+  if (replay) replay.addEventListener('click', function(e){ e.preventDefault(); show('home'); requestAnimationFrame(startTour); });
+
   show('home');
+  window.addEventListener('load', function(){ setTimeout(startTour, 400); });
 })();
 </script>
 </body>
