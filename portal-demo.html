@@ -36,9 +36,9 @@
 
 <!-- Desktop-only left navigation. -->
 <aside class="side-nav" aria-label="Main navigation">
-  <a class="sn-brand" href="#home"><img src="assets/portal-banner.jpg" alt="VicThree Defence"></a>
+  <a class="sn-brand" href="#home"><img src="assets/portal-banner.jpg" alt="VicThree Defence — by Anmol Sharma"></a>
   <nav class="sn-links">
-    <a class="sn-link is-active" data-view="home" href="#home"><span class="sn-ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>Dashboard</a>
+    <a class="sn-link active" data-view="home" href="#home"><span class="sn-ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>Dashboard</a>
     <a class="sn-link" data-view="lectures" href="#lectures"><span class="sn-ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z"/></svg></span>Lectures</a>
     <a class="sn-link" data-view="notes" href="#notes"><span class="sn-ic"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 16h4"/></svg></span>Notes</a>
     <a class="sn-link" data-view="ca" href="#current-affairs"><span class="sn-ic"><svg viewBox="0 0 24 24"><path d="M4 5h13v14H4z"/><path d="M17 8h3v9a2 2 0 0 1-2 2h-1z"/><path d="M7 8h7M7 11h7M7 14h5"/></svg></span>Current Affairs</a>
@@ -47,8 +47,11 @@
   <div class="sn-tools">
     <div class="sn-cap">More from VicThree</div>
     <div class="sn-tool-list">
-      <a class="sn-tool" href="https://victhree.github.io/victhree-vocab/" target="_blank" rel="noopener">Vocabulary</a>
-      <a class="sn-tool" href="https://victhree.github.io/victhree-pyq/" target="_blank" rel="noopener">CDS PYQs</a>
+      <a class="sn-tool" href="https://vocab.victhreedefence.com/" target="_blank" rel="noopener">Vocabulary</a>
+      <a class="sn-tool" href="https://pyq.victhreedefence.com/" target="_blank" rel="noopener">PYQ Library</a>
+      <a class="sn-tool" href="https://mocks.victhreedefence.com/" target="_blank" rel="noopener">Mock Tests</a>
+      <a class="sn-tool" href="https://interview.victhreedefence.com/" target="_blank" rel="noopener">SSB Interview</a>
+      <a class="sn-tool" href="https://ssb.victhreedefence.com/" target="_blank" rel="noopener">SSB Psych &amp; GTO</a>
     </div>
   </div>
   <a class="sn-logout" href="gs-course.html">Exit demo</a>
@@ -68,11 +71,11 @@
   </div>
 
   <!-- ===== HOME ===== -->
-  <section id="view-home">
+  <section id="v-home">
     <div class="home-grid">
       <div class="home-mid">
         <div class="dash-head"><h1 class="greeting">
-          <span class="g-l1">Hi, Aspirant</span>
+          <span class="g-l1">Welcome, Aspirant</span>
           <span class="g-l2">Good morning. Ready for today's topic?</span>
         </h1></div>
 
@@ -89,14 +92,31 @@
           <a class="duo-tile today" data-view="watch" href="#watch">
             <span class="duo-k">Today's Video</span>
             <span class="duo-title">Topic 7: The Indian Monsoon</span>
-            <span class="duo-go">Open &rarr;</span>
+            <span class="duo-go">Watch now &rarr;</span>
           </a>
-          <a class="duo-tile vocab" href="https://victhree.github.io/victhree-vocab/" target="_blank" rel="noopener">
+          <a class="duo-tile vocab" href="https://vocab.victhreedefence.com/" target="_blank" rel="noopener">
             <span class="duo-k">Vocab of the Day</span>
-            <span class="duo-title wotd-word">Ubiquitous</span>
-            <span class="duo-sub wotd-mean">present everywhere</span>
+            <span class="duo-title wotd-word" id="wotdWord">Ubiquitous</span>
+            <span class="duo-sub wotd-mean" id="wotdMean">present everywhere</span>
             <span class="duo-go" aria-hidden="true">Learn more &#8599;</span>
           </a>
+        </div>
+
+        <div class="ann-collapse">
+          <button class="ann-toggle" id="annToggle" aria-expanded="false" type="button">
+            <span class="ann-bell" aria-hidden="true">&#128276;<span class="ann-badge">1</span></span>
+            <span class="ann-toggle-label">Announcements</span>
+            <span class="ann-caret" id="annCaret" aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="ann-panel" id="annPanel" hidden>
+            <div class="ann-list">
+              <div class="ann-item">
+                <div class="ann-title">Geography subject test this Sunday</div>
+                <div class="ann-text">The Geography subject test (basic and advanced) opens on 28 September. Revise Topics 1 to 8 before then.</div>
+                <div class="ann-date">Posted 2 days ago</div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="tiles">
@@ -134,13 +154,13 @@
             <span class="cal-title">September 2026</span>
           </div>
           <div class="cal-grid">
-            <span class="cal-dow">S</span><span class="cal-dow">M</span><span class="cal-dow">T</span><span class="cal-dow">W</span><span class="cal-dow">T</span><span class="cal-dow">F</span><span class="cal-dow">S</span>
-            <span class="cal-pad"></span><span class="cal-pad"></span>
-            <span class="cal-day done">1</span><span class="cal-day done">2</span><span class="cal-day done">3</span><span class="cal-day done">4</span><span class="cal-day done">5</span>
-            <span class="cal-day done">6</span><span class="cal-day done">7</span><span class="cal-day done">8</span><span class="cal-day done">9</span><span class="cal-day done">10</span><span class="cal-day done">11</span><span class="cal-day done">12</span>
-            <span class="cal-day done">13</span><span class="cal-day done">14</span><span class="cal-day done">15</span><span class="cal-day done">16</span><span class="cal-day done">17</span><span class="cal-day done">18</span><span class="cal-day done">19</span>
-            <span class="cal-day today">20</span><span class="cal-day">21</span><span class="cal-day">22</span><span class="cal-day">23</span><span class="cal-day">24</span><span class="cal-day">25</span><span class="cal-day">26</span>
-            <span class="cal-day">27</span><span class="cal-day">28</span><span class="cal-day">29</span><span class="cal-day">30</span>
+            <span class="cal-dow">Mon</span><span class="cal-dow">Tue</span><span class="cal-dow">Wed</span><span class="cal-dow">Thu</span><span class="cal-dow">Fri</span><span class="cal-dow">Sat</span><span class="cal-dow">Sun</span>
+            <span class="cal-cell empty"></span>
+            <span class="cal-cell">1</span><span class="cal-cell">2</span><span class="cal-cell">3</span><span class="cal-cell">4</span><span class="cal-cell">5</span><span class="cal-cell">6</span>
+            <span class="cal-cell">7</span><span class="cal-cell">8</span><span class="cal-cell">9</span><span class="cal-cell">10</span><span class="cal-cell">11</span><span class="cal-cell">12</span><span class="cal-cell">13</span>
+            <span class="cal-cell">14</span><span class="cal-cell">15</span><span class="cal-cell">16</span><span class="cal-cell">17</span><span class="cal-cell">18</span><span class="cal-cell">19</span><span class="cal-cell today">20</span>
+            <span class="cal-cell">21</span><span class="cal-cell">22</span><span class="cal-cell">23</span><span class="cal-cell">24</span><span class="cal-cell">25</span><span class="cal-cell">26</span><span class="cal-cell">27</span>
+            <span class="cal-cell has-event">28</span><span class="cal-cell">29</span><span class="cal-cell">30</span>
           </div>
         </div>
         <div class="mock-card">
@@ -161,7 +181,7 @@
   </section>
 
   <!-- ===== LECTURES ===== -->
-  <section id="view-lectures" class="hide">
+  <section id="v-lectures" class="hide">
     <a class="back-link" data-view="home" href="#home">&larr; Home</a>
     <div class="section-title">Lectures</div>
     <div class="tiles">
@@ -190,7 +210,7 @@
   </section>
 
   <!-- ===== GEOGRAPHY TOPICS ===== -->
-  <section id="view-geography" class="hide">
+  <section id="v-geography" class="hide">
     <a class="back-link" data-view="lectures" href="#lectures">&larr; Lectures</a>
     <div class="section-title">Geography</div>
     <p class="muted" style="margin:-8px 0 16px;font-size:13.5px">Each topic unlocks at 7:00 AM India time. Finish today before tomorrow opens.</p>
@@ -204,7 +224,7 @@
   </section>
 
   <!-- ===== WATCH (video) ===== -->
-  <section id="view-watch" class="hide watch">
+  <section id="v-watch" class="hide watch">
     <a class="back-link" data-view="geography" href="#geography">&larr; Geography</a>
     <div style="font-size:12.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:4px">Topic 7</div>
     <h1>The Indian Monsoon</h1>
@@ -217,12 +237,12 @@
     </div>
     <div class="watch-actions">
       <a class="tab" data-view="notes" href="#notes"><span class="tab-ic"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 16h4"/></svg></span>Notes</a>
-      <a class="tab primary" href="https://victhree.github.io/victhree-pyq/" target="_blank" rel="noopener"><span class="tab-ic"><svg viewBox="0 0 24 24"><path d="M9 4h6v2H9z"/><path d="M15 5h3v15a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V5h3"/><path d="M9 13l2 2 4-4"/></svg></span>Take the test</a>
+      <a class="tab primary" href="https://mocks.victhreedefence.com/" target="_blank" rel="noopener"><span class="tab-ic"><svg viewBox="0 0 24 24"><path d="M9 4h6v2H9z"/><path d="M15 5h3v15a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V5h3"/><path d="M9 13l2 2 4-4"/></svg></span>Take the test</a>
     </div>
   </section>
 
   <!-- ===== NOTES ===== -->
-  <section id="view-notes" class="hide">
+  <section id="v-notes" class="hide">
     <a class="back-link" data-view="home" href="#home">&larr; Home</a>
     <div class="section-title">Notes</div>
     <p class="muted" style="margin:-8px 0 16px;font-size:13.5px">Each topic's notes open at 6 PM the evening before its video.</p>
@@ -235,7 +255,7 @@
   </section>
 
   <!-- ===== CURRENT AFFAIRS ===== -->
-  <section id="view-ca" class="hide">
+  <section id="v-ca" class="hide">
     <a class="back-link" data-view="home" href="#home">&larr; Home</a>
     <div class="section-title">Current Affairs</div>
     <p class="muted" style="margin:-8px 0 16px;font-size:13.5px">Monthly current-affairs magazine. All issues are open.</p>
@@ -247,7 +267,7 @@
   </section>
 
   <!-- ===== SSB PROGRESS ===== -->
-  <section id="view-ssb" class="hide">
+  <section id="v-ssb" class="hide">
     <a class="back-link" data-view="home" href="#home">&larr; Home</a>
     <div class="section-title">Your SSB progress</div>
     <div class="ssb-grid">
@@ -280,8 +300,8 @@
 <script>
 (function(){
   var views = {
-    home:'view-home', lectures:'view-lectures', geography:'view-geography',
-    watch:'view-watch', notes:'view-notes', ca:'view-ca', ssb:'view-ssb'
+    home:'v-home', lectures:'v-lectures', geography:'v-geography',
+    watch:'v-watch', notes:'v-notes', ca:'v-ca', ssb:'v-ssb'
   };
   // which sidenav link to highlight for each view
   var navFor = { home:'home', lectures:'lectures', geography:'lectures', watch:'lectures', notes:'notes', ca:'ca', ssb:'ssb' };
@@ -293,7 +313,7 @@
       if(el) el.classList.toggle('hide', k !== name);
     });
     document.querySelectorAll('.sn-link').forEach(function(a){
-      a.classList.toggle('is-active', a.getAttribute('data-view') === navFor[name]);
+      a.classList.toggle('active', a.getAttribute('data-view') === navFor[name]);
     });
     window.scrollTo(0,0);
   }
@@ -304,6 +324,34 @@
     e.preventDefault();
     show(t.getAttribute('data-view'));
   });
+
+  // Announcements bar: expand/collapse.
+  var annToggle = document.getElementById('annToggle');
+  var annPanel = document.getElementById('annPanel');
+  var annCaret = document.getElementById('annCaret');
+  if (annToggle && annPanel){
+    annToggle.addEventListener('click', function(){
+      var open = annPanel.hasAttribute('hidden');
+      if (open){ annPanel.removeAttribute('hidden'); } else { annPanel.setAttribute('hidden',''); }
+      annToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (annCaret) annCaret.style.transform = open ? 'rotate(180deg)' : '';
+    });
+  }
+
+  // Vocab of the day rotates, like the real portal.
+  var VOCAB = [
+    {w:'Ubiquitous', m:'present everywhere'},
+    {w:'Alacrity',   m:'brisk and cheerful readiness'},
+    {w:'Prudent',    m:'careful and sensible'},
+    {w:'Tenacity',   m:'persistent determination'}
+  ];
+  var vi = 0, ww = document.getElementById('wotdWord'), wm = document.getElementById('wotdMean');
+  if (ww && wm){
+    setInterval(function(){
+      vi = (vi + 1) % VOCAB.length;
+      ww.textContent = VOCAB[vi].w; wm.textContent = VOCAB[vi].m;
+    }, 5000);
+  }
 
   show('home');
 })();
