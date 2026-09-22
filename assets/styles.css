@@ -812,3 +812,11 @@ section{padding:74px 0;position:relative}
 .whofor-list li{position:relative;padding-left:40px;font-family:var(--serif);font-size:clamp(1.02rem,2.2vw,1.22rem);line-height:1.5;color:var(--ink);text-wrap:pretty}
 .whofor-list li::before{content:"";position:absolute;left:0;top:1px;width:25px;height:25px;border-radius:50%;background:rgba(184,145,47,.14);border:1px solid var(--line-2)}
 .whofor-list li::after{content:"";position:absolute;left:8px;top:8px;width:9px;height:5px;border-left:2px solid var(--gold);border-bottom:2px solid var(--gold);transform:rotate(-45deg)}
+
+/* "See inside the portal" band (links to portal-demo.html) */
+.portal-peek{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.pp-points{list-style:none;padding:0;margin:0 auto 30px;max-width:840px;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 12px}
+.pp-points li{position:relative;padding:9px 16px 9px 34px;background:#fff;border:1px solid var(--line);border-radius:30px;font-family:var(--sans);font-size:.9rem;color:var(--ink)}
+.pp-points li::before{content:"";position:absolute;left:14px;top:50%;transform:translateY(-50%);width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.pp-cta{text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px}
+.pp-note{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft)}
