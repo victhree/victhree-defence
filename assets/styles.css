@@ -814,3 +814,29 @@ section{padding:74px 0;position:relative}
 .pp-points li::before{content:"";position:absolute;left:14px;top:50%;transform:translateY(-50%);width:8px;height:8px;border-radius:50%;background:var(--gold)}
 .pp-cta{text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px}
 .pp-note{font-family:var(--sans);font-size:.82rem;color:var(--ink-soft)}
+
+/* ============================================================
+   LANDING HERO (.hero-full): full-bleed mentor photo, copy on a
+   left vignette. Scoped so the main site's .hero is untouched.
+   ============================================================ */
+.hero.hero-full{background:var(--navy-3)}
+.hero.hero-full::before{background:url("anmol-hero.jpg?v=4") center 20%/cover no-repeat;opacity:1}
+.hero.hero-full::after{background:
+  linear-gradient(180deg,rgba(11,26,48,.55) 0%,rgba(11,26,48,0) 22%,rgba(11,26,48,0) 72%,rgba(11,26,48,.6) 100%),
+  linear-gradient(90deg,rgba(11,26,48,.95) 0%,rgba(11,26,48,.82) 30%,rgba(11,26,48,.44) 60%,rgba(11,26,48,.12) 100%)}
+.hero.hero-full .hero-top{text-align:left;padding:26px 22px 0}
+.hero.hero-full .hero-banner{width:min(380px,56%);margin:0}
+.hero.hero-full .wrap{display:flex;align-items:center;grid-template-columns:none;min-height:430px;padding:26px 22px 62px}
+.hero.hero-full .hero-copy{max-width:600px;display:block}
+.hero.hero-full h1{text-shadow:0 2px 22px rgba(0,0,0,.42)}
+.hero.hero-full .hero-sub{color:#f4eede;text-shadow:0 1px 14px rgba(0,0,0,.5)}
+@media(max-width:840px){
+  .hero.hero-full::before{background-position:center 14%}
+  .hero.hero-full::after{background:linear-gradient(180deg,rgba(11,26,48,.6) 0%,rgba(11,26,48,.42) 40%,rgba(11,26,48,.75) 100%)}
+  .hero.hero-full .hero-top{text-align:center;padding:22px 16px 0}
+  .hero.hero-full .hero-banner{width:min(340px,84%);margin:0 auto}
+  .hero.hero-full .wrap{display:block;min-height:auto;padding:18px 20px 40px;text-align:center}
+  .hero.hero-full .hero-copy{max-width:none}
+  .hero.hero-full .hero-sub{margin-left:auto;margin-right:auto}
+  .hero.hero-full .hero-cta{justify-content:center}
+}
