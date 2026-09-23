@@ -740,7 +740,7 @@ section{padding:74px 0;position:relative}
    ============================================================ */
 .vq-band{background:var(--navy-3);padding:0}
 .vq-card{position:relative;max-width:var(--maxw);margin:0 auto;min-height:500px;
-  overflow:hidden;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-3) 100%);
+  overflow:hidden;background:var(--navy-3);
   display:flex;flex-direction:column;justify-content:flex-end}
 
 /* the portrait, anchored right, desaturated to match the brand */
@@ -756,7 +756,7 @@ section{padding:74px 0;position:relative}
   color:rgba(233,220,184,.28);letter-spacing:.04em;line-height:1}
 /* gradient so the quote stays readable across the photo */
 .vq-card::after{content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(90deg,var(--navy) 6%,rgba(15,35,64,.94) 38%,rgba(15,35,64,.55) 62%,rgba(15,35,64,.18) 100%)}
+  background:linear-gradient(90deg,var(--navy-3) 6%,rgba(11,26,48,.94) 38%,rgba(11,26,48,.55) 62%,rgba(11,26,48,.18) 100%)}
 
 .vq-inner{position:relative;z-index:2;padding:clamp(32px,5vw,58px) clamp(22px,4vw,54px) clamp(34px,4.5vw,52px);
   max-width:62%}
@@ -781,7 +781,7 @@ section{padding:74px 0;position:relative}
   .vq-photo img{object-position:center top;
     -webkit-mask-image:linear-gradient(to bottom,#000 92%,transparent 100%);
     mask-image:linear-gradient(to bottom,#000 92%,transparent 100%)}
-  .vq-card::after{background:linear-gradient(180deg,transparent 40%,rgba(15,35,64,.5) 62%,rgba(15,35,64,.92) 82%,var(--navy) 100%)}
+  .vq-card::after{background:linear-gradient(180deg,transparent 40%,rgba(11,26,48,.5) 62%,rgba(11,26,48,.92) 82%,var(--navy-3) 100%)}
   .vq-inner{max-width:none;margin-top:-140px;padding-top:0}
 }
 
