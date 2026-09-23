@@ -624,8 +624,11 @@ section{padding:74px 0;position:relative}
    Uses existing tokens. Does not restyle any shared class.
    ============================================================ */
 
-/* minimal nav: brand + one CTA, always visible incl. mobile */
-.gs-nav .nav-brand{opacity:1;visibility:visible;margin-right:auto}
+/* minimal nav: brand + one CTA. Hidden at the top, slides in on scroll. */
+.gs-nav{position:fixed;left:0;right:0;top:0;transform:translateY(-100%);opacity:0;pointer-events:none;transition:transform .3s ease,opacity .3s ease}
+.gs-nav.scrolled{transform:none;opacity:1;pointer-events:auto}
+.gs-nav .nav-brand{opacity:1;visibility:visible;margin-right:auto;min-width:0}
+.gs-nav .nav-brand img{width:auto;height:auto;max-height:38px;object-fit:contain}
 .gs-nav .nav-cta{display:inline-block}
 @media(max-width:700px){.gs-nav .nav-cta{display:inline-block;padding:9px 14px;font-size:.7rem}}
 @media(max-width:400px){.gs-nav .nav-cta{font-size:.62rem;padding:8px 11px;letter-spacing:.03em}}
