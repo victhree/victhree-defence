@@ -697,7 +697,10 @@ section{padding:74px 0;position:relative}
 @media(max-width:620px){.trial-card .tc-feats{grid-template-columns:1fr}}
 
 /* --- tier cards --- */
-.plan-grid.tiers{align-items:start}
+.plan-grid.tiers{align-items:stretch}
+/* price sits at the foot of each tier card, aligned across the row */
+.tiers .plan-fee{order:9;margin-top:auto;padding-top:16px;border-top:1px solid var(--line)}
+.plan-fee .fee-was{margin-right:11px;font-size:.6em;font-weight:700;color:var(--ink-soft);text-decoration:line-through;text-decoration-color:var(--gold);text-decoration-thickness:2px}
 .plans .plan-fee{font-family:var(--serif);font-weight:800;font-size:2.1rem;
   color:var(--navy);line-height:1;margin:2px 0 0}
 .plan-fee .fee-sub{display:block;font-family:var(--sans);font-weight:600;font-size:.72rem;
