@@ -806,12 +806,6 @@ section{padding:74px 0;position:relative}
 .rev-stat-nums span{color:var(--gold)}
 .rev-stat-cap{font-family:var(--sans);font-size:.9rem;color:var(--ink-soft);margin-top:12px;line-height:1.5;max-width:46ch;margin-inline:auto}
 
-.whofor{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.whofor .section-head{margin-bottom:28px}
-.whofor-list{list-style:none;padding:0;margin:0 auto;max-width:720px;display:flex;flex-direction:column;gap:14px}
-.whofor-list li{position:relative;padding-left:40px;font-family:var(--serif);font-size:clamp(1.02rem,2.2vw,1.22rem);line-height:1.5;color:var(--ink);text-wrap:pretty}
-.whofor-list li::before{content:"";position:absolute;left:0;top:1px;width:25px;height:25px;border-radius:50%;background:rgba(184,145,47,.14);border:1px solid var(--line-2)}
-.whofor-list li::after{content:"";position:absolute;left:8px;top:8px;width:9px;height:5px;border-left:2px solid var(--gold);border-bottom:2px solid var(--gold);transform:rotate(-45deg)}
 
 /* "See inside the portal" band (links to portal-demo.html) */
 .portal-peek{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
