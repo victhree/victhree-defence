@@ -820,7 +820,7 @@ section{padding:74px 0;position:relative}
    left vignette. Scoped so the main site's .hero is untouched.
    ============================================================ */
 .hero.hero-full{background:var(--navy-3)}
-.hero.hero-full::before{background:url("anmol-hero.jpg?v=4") calc(100% + 55px) 66%/auto 156% no-repeat;opacity:1;-webkit-mask-image:linear-gradient(90deg,transparent 22%,#000 58%);mask-image:linear-gradient(90deg,transparent 22%,#000 58%)}
+.hero.hero-full::before{background:url("anmol-hero.jpg?v=4") calc(100% + 140px) 66%/auto 156% no-repeat;opacity:1;-webkit-mask-image:linear-gradient(90deg,transparent 22%,#000 58%);mask-image:linear-gradient(90deg,transparent 22%,#000 58%)}
 .hero.hero-full::after{background:
   linear-gradient(180deg,rgba(11,26,48,.55) 0%,rgba(11,26,48,0) 22%,rgba(11,26,48,0) 72%,rgba(11,26,48,.6) 100%),
   linear-gradient(90deg,rgba(11,26,48,.95) 0%,rgba(11,26,48,.82) 30%,rgba(11,26,48,.44) 60%,rgba(11,26,48,.12) 100%)}
