@@ -875,8 +875,8 @@ body.gs-page .method .guarantee{font-weight:600}
   .hero.hero-full .hero-photo-zone{position:relative;z-index:1;margin:-1.15em -16px 0;padding:0}
   .hero.hero-full .hero-figure{display:block;width:100%;height:auto;margin:0;
     filter:brightness(1.05) saturate(1.04);
-    -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 60%,#000 80%,transparent 100%);
-    mask-image:linear-gradient(180deg,transparent 0,#000 60%,#000 80%,transparent 100%)}
+    -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 33%,#000 82%,transparent 100%);
+    mask-image:linear-gradient(180deg,transparent 0,#000 33%,#000 82%,transparent 100%)}
   .hero.hero-full .hero-sub{position:relative;z-index:2;font-size:1.06rem;line-height:1.6;margin:.76em 0 0;padding:0 16px;max-width:none;color:#f4eede;text-shadow:0 1px 2px rgba(11,26,48,.7),0 1px 12px rgba(11,26,48,.65)}
 
   .hero.hero-full .hero-cta{flex-direction:column;align-items:stretch;gap:12px;margin-top:12px}
