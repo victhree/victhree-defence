@@ -850,9 +850,9 @@ body.gs-page .method .guarantee{font-weight:600}
 .hero.hero-full .hero-banner{width:min(380px,56%);margin:0}
 .hero.hero-full .wrap{display:flex;align-items:center;grid-template-columns:none;min-height:430px;padding:26px 22px 62px}
 .hero.hero-full .hero-copy{max-width:660px;display:block}
-.hero.hero-full h1{font-weight:600;font-size:clamp(2.2rem,3.9vw,3.1rem);line-height:1.12;letter-spacing:-.015em;text-transform:none;text-shadow:0 2px 22px rgba(0,0,0,.42)}
-.hero.hero-full h1 .g{display:block;margin-top:.5em;font-size:.52em;line-height:1.36;font-weight:500;letter-spacing:0}
-.hero.hero-full .hero-sub{color:#f4eede;text-shadow:0 1px 14px rgba(0,0,0,.5)}
+.hero.hero-full h1{font-weight:600;font-size:clamp(2.5rem,4.6vw,3.7rem);line-height:1.1;letter-spacing:-.015em;text-transform:none;text-shadow:0 2px 22px rgba(0,0,0,.42)}
+.hero.hero-full h1 .g{display:block;margin-top:.5em;font-size:.54em;line-height:1.32;font-weight:500;letter-spacing:0}
+.hero.hero-full .hero-sub{font-size:1.16rem;color:#f4eede;text-shadow:0 1px 14px rgba(0,0,0,.5)}
 @media(max-width:840px){
   .hero.hero-full::before{background-position:center 16%;background-size:auto 124%;-webkit-mask-image:none;mask-image:none}
   .hero.hero-full::after{background:linear-gradient(180deg,rgba(11,26,48,.6) 0%,rgba(11,26,48,.34) 44%,rgba(11,26,48,.74) 100%)}
