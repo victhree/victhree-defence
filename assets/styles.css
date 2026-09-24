@@ -860,7 +860,7 @@ body.gs-page .method .guarantee{font-weight:600}
   /* Navy content zone; the photo begins under the subheading. The navy
      gradient continues down over the head so the body pops out below, and the
      paragraph overlaps the blended top. Buttons sit on navy below the photo. */
-  .hero.hero-full{background:var(--navy-3);overflow:hidden}
+  .hero.hero-full{background:var(--navy-3);overflow:hidden;padding-bottom:0}
   .hero.hero-full::before{display:none}
   .hero.hero-full::after{background:none}
   .hero.hero-full h1{font-size:clamp(2.75rem,11.6vw,4.25rem);line-height:1.1;letter-spacing:-.05em;text-shadow:none;position:relative;z-index:2}
