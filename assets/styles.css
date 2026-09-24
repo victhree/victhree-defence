@@ -564,7 +564,7 @@ section{padding:74px 0;position:relative}
 .course .flow span:not(.arw){background:var(--gold);color:var(--navy);border-color:var(--gold)}
 
 /* footer: refund as a collapsible button above contact; contact as icon row */
-.foot-refund{margin:0 0 28px;border-bottom:1px solid var(--line-dark);padding-bottom:16px}
+.foot-refund{margin:0 0 16px}
 .foot-refund>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:9px;font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:.72rem;color:var(--gold)}
 .foot-refund>summary::-webkit-details-marker{display:none}
 .foot-refund>summary::after{content:"";width:7px;height:7px;border-right:2px solid var(--gold);border-bottom:2px solid var(--gold);transform:rotate(45deg) translateY(-1px);transition:transform .2s}
