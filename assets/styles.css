@@ -855,6 +855,7 @@ body.gs-page .method .guarantee{font-weight:600}
 .hero.hero-full .hero-sub{font-size:1.16rem;color:#f4eede;text-shadow:0 1px 14px rgba(0,0,0,.5)}
 .hero-cta .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px}
 .hero-cta .btn-ic{width:18px;height:18px;flex:none}
+.hero-figure{display:none}
 @media(max-width:840px){
   /* Navy content zone; the photo begins under the subheading. The navy
      gradient continues down over the head so the body pops out below, and the
@@ -871,14 +872,12 @@ body.gs-page .method .guarantee{font-weight:600}
   .hero.hero-full .wrap{display:block;min-height:auto;padding:14px 18px 34px;text-align:left}
   .hero.hero-full .hero-copy{max-width:none}
 
-  .hero.hero-full .hero-photo-zone{position:relative;margin:22px -18px 0;padding:0 18px min(50vh,440px)}
-  .hero.hero-full .hero-photo-zone::before{content:"";position:absolute;inset:0;z-index:0;
-    background:url("anmol-hero.jpg?v=4") center 22%/cover no-repeat;
+  .hero.hero-full .hero-photo-zone{margin:20px -18px 0;padding:0}
+  .hero.hero-full .hero-sub{font-size:1.06rem;line-height:1.6;margin:0 0 2px;padding:0 18px;max-width:none;color:#f4eede;text-shadow:none}
+  .hero.hero-full .hero-figure{display:block;width:100%;height:auto;margin-top:-6px;
     filter:brightness(1.05) saturate(1.04);
-    -webkit-mask-image:linear-gradient(to bottom,transparent 0,transparent 24%,#000 54%,#000 90%,transparent 100%);
-    mask-image:linear-gradient(to bottom,transparent 0,transparent 24%,#000 54%,#000 90%,transparent 100%)}
-  .hero.hero-full .hero-sub{position:relative;z-index:1;font-size:1.06rem;line-height:1.6;margin:0;max-width:none;
-    color:#f4eede;text-shadow:0 1px 2px rgba(11,26,48,.85),0 2px 16px rgba(11,26,48,.75)}
+    -webkit-mask-image:linear-gradient(180deg,transparent 0,transparent 3%,#000 38%,#000 85%,transparent 100%);
+    mask-image:linear-gradient(180deg,transparent 0,transparent 3%,#000 38%,#000 85%,transparent 100%)}
 
-  .hero.hero-full .hero-cta{justify-content:center;gap:12px;position:relative;z-index:2;margin-top:6px}
+  .hero.hero-full .hero-cta{justify-content:center;gap:12px;margin-top:8px}
 }
