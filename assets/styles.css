@@ -847,7 +847,7 @@ body.gs-page .method .guarantee{font-weight:600}
   linear-gradient(180deg,rgba(11,26,48,.55) 0%,rgba(11,26,48,0) 22%,rgba(11,26,48,0) 72%,rgba(11,26,48,.6) 100%),
   linear-gradient(90deg,rgba(11,26,48,.95) 0%,rgba(11,26,48,.82) 30%,rgba(11,26,48,.44) 60%,rgba(11,26,48,.12) 100%)}
 .hero.hero-full .hero-top{text-align:left;padding:26px 22px 0}
-.hero.hero-full .hero-banner{width:min(392px,58%);margin:0;background:var(--navy-3);padding:13px 22px;border-radius:14px;box-sizing:border-box;border:1px solid rgba(233,220,184,.22);box-shadow:0 6px 22px rgba(0,0,0,.3)}
+.hero.hero-full .hero-banner{width:min(380px,56%);margin:0}
 .hero.hero-full .wrap{display:flex;align-items:center;grid-template-columns:none;min-height:430px;padding:26px 22px 62px}
 .hero.hero-full .hero-copy{max-width:660px;display:block}
 .hero.hero-full h1{font-weight:600;font-size:clamp(2.5rem,4.6vw,3.7rem);line-height:1.1;letter-spacing:-.015em;text-transform:none;text-shadow:0 2px 22px rgba(0,0,0,.42)}
