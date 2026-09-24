@@ -845,7 +845,7 @@ body.gs-page{--serif:"Playfair Display",Georgia,"Times New Roman",serif}
 .hero.hero-full .hero-banner{width:min(380px,56%);margin:0}
 .hero.hero-full .wrap{display:flex;align-items:center;grid-template-columns:none;min-height:430px;padding:26px 22px 62px}
 .hero.hero-full .hero-copy{max-width:660px;display:block}
-.hero.hero-full h1{font-size:clamp(2rem,3.4vw,2.7rem);line-height:1.16;letter-spacing:-.01em;text-shadow:0 2px 22px rgba(0,0,0,.42)}
+.hero.hero-full h1{font-size:clamp(2.05rem,3.5vw,2.85rem);line-height:1.14;letter-spacing:-.01em;text-transform:none;text-shadow:0 2px 22px rgba(0,0,0,.42)}
 .hero.hero-full h1 .g{display:block;margin-top:.5em;font-size:.56em;line-height:1.34;font-weight:700;letter-spacing:0}
 .hero.hero-full .hero-sub{color:#f4eede;text-shadow:0 1px 14px rgba(0,0,0,.5)}
 @media(max-width:840px){
