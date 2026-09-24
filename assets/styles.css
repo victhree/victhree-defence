@@ -628,6 +628,9 @@ section{padding:74px 0;position:relative}
    Uses existing tokens. Does not restyle any shared class.
    ============================================================ */
 
+/* Landing page uses Playfair Display for its serif/display type */
+body.gs-page{--serif:"Playfair Display",Georgia,"Times New Roman",serif}
+
 /* minimal nav: brand + one CTA. Hidden at the top, slides in on scroll. */
 .gs-nav{position:fixed;left:0;right:0;top:0;transform:translateY(-100%);opacity:0;pointer-events:none;transition:transform .3s ease,opacity .3s ease}
 .gs-nav.scrolled{transform:none;opacity:1;pointer-events:auto}
