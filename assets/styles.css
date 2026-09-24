@@ -559,6 +559,27 @@ section{padding:74px 0;position:relative}
 .foot-bottom .socials{gap:18px}
 .foot-bottom .socials a{color:var(--gold-soft)}
 .foot-bottom .socials a:hover{color:#fff}
+
+/* golden flow tiles in the 90-day system */
+.course .flow span{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+.course .gs-fstep{background:linear-gradient(180deg,var(--gold-2) 0%,var(--gold) 100%);border:none;border-top:none;border-radius:13px;padding:15px 15px 17px;box-shadow:0 8px 22px rgba(0,0,0,.22)}
+.course .gs-fstep .fk{color:var(--navy)}
+.course .gs-fstep p{color:rgba(11,26,48,.82)}
+
+/* footer: refund as a collapsible button above contact; contact as icon row */
+.foot-refund{margin:0 0 28px;border-bottom:1px solid var(--line-dark);padding-bottom:16px}
+.foot-refund>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:9px;font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:.72rem;color:var(--gold)}
+.foot-refund>summary::-webkit-details-marker{display:none}
+.foot-refund>summary::after{content:"";width:7px;height:7px;border-right:2px solid var(--gold);border-bottom:2px solid var(--gold);transform:rotate(45deg) translateY(-1px);transition:transform .2s}
+.foot-refund[open]>summary::after{transform:rotate(-135deg)}
+.foot-refund-body{padding-top:12px}
+.foot-refund-body p{font-family:var(--sans);font-size:.8rem;line-height:1.6;color:rgba(233,220,184,.6);margin:0 0 10px;max-width:88ch}
+.foot-refund-body p:last-child{margin:0}
+.foot-mail{display:inline-block;font-family:var(--sans);font-size:.9rem;color:var(--gold-soft);text-decoration:none;margin:0 0 14px}
+.foot-mail:hover{color:#fff}
+.foot-socials{justify-content:flex-start;gap:20px}
+.foot-socials a{color:var(--gold-soft)}
+.foot-socials a:hover{color:#fff}
 @media(max-width:780px){
   .foot-grid{grid-template-columns:1fr 1fr;gap:26px}
   .foot-brand{grid-column:1/-1}
