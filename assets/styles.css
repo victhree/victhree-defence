@@ -560,11 +560,8 @@ section{padding:74px 0;position:relative}
 .foot-bottom .socials a{color:var(--gold-soft)}
 .foot-bottom .socials a:hover{color:#fff}
 
-/* golden flow tiles in the 90-day system */
-.course .flow span{background:var(--gold);color:var(--navy);border-color:var(--gold)}
-.course .gs-fstep{background:linear-gradient(180deg,var(--gold-2) 0%,var(--gold) 100%);border:none;border-top:none;border-radius:13px;padding:15px 15px 17px;box-shadow:0 8px 22px rgba(0,0,0,.22)}
-.course .gs-fstep .fk{color:var(--navy)}
-.course .gs-fstep p{color:rgba(11,26,48,.82)}
+/* golden word tiles in the 90-day flow (arrows stay plain) */
+.course .flow span:not(.arw){background:var(--gold);color:var(--navy);border-color:var(--gold)}
 
 /* footer: refund as a collapsible button above contact; contact as icon row */
 .foot-refund{margin:0 0 28px;border-bottom:1px solid var(--line-dark);padding-bottom:16px}
