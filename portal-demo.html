@@ -401,7 +401,7 @@
   function place(target){
     var pr = pop.getBoundingClientRect();
     var r = target.getBoundingClientRect();
-    var vw = window.innerWidth, vh = window.innerHeight, gap = 12, pad = 12;
+    var vw = window.innerWidth, vh = window.innerHeight, gap = 46, pad = 12;
     var top, left = Math.min(Math.max(r.left, pad), Math.max(pad, vw - pr.width - pad));
     if (r.bottom + gap + pr.height <= vh - pad){ top = r.bottom + gap; }
     else if (r.top - gap - pr.height >= pad){ top = r.top - gap - pr.height; }
