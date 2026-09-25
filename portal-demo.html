@@ -402,10 +402,14 @@
     var pr = pop.getBoundingClientRect();
     var r = target.getBoundingClientRect();
     var vw = window.innerWidth, vh = window.innerHeight, gap = 46, pad = 12;
-    var top, left = Math.min(Math.max(r.left, pad), Math.max(pad, vw - pr.width - pad));
-    if (r.bottom + gap + pr.height <= vh - pad){ top = r.bottom + gap; }
-    else if (r.top - gap - pr.height >= pad){ top = r.top - gap - pr.height; }
-    else { top = Math.max(pad, (vh - pr.height)/2); }
+    var pw = pr.width, ph = pr.height, top, left;
+    function clampX(x){ return Math.min(Math.max(x, pad), Math.max(pad, vw - pw - pad)); }
+    function clampY(y){ return Math.min(Math.max(y, pad), Math.max(pad, vh - ph - pad)); }
+    if (r.bottom + gap + ph <= vh - pad){ top = r.bottom + gap; left = clampX(r.left); }        // below
+    else if (r.top - gap - ph >= pad){ top = r.top - gap - ph; left = clampX(r.left); }          // above
+    else if (r.left - gap - pw >= pad){ left = r.left - gap - pw; top = clampY(r.top); }          // left
+    else if (r.right + gap + pw <= vw - pad){ left = r.right + gap; top = clampY(r.top); }        // right
+    else { top = Math.max(pad, (vh - ph)/2); left = clampX(r.left); }                             // center fallback
     pop.style.top = top + 'px'; pop.style.left = left + 'px';
   }
 
