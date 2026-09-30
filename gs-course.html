@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&display=swap">
-<link rel="stylesheet" href="assets/styles.css?v=120">
+<link rel="stylesheet" href="assets/styles.css?v=121">
 
 <!-- =========================================================================
      VICTHREE AD CONFIG  —  PASTE YOUR 3 VALUES BELOW, THEN DEPLOY.
@@ -99,35 +99,6 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
       <blockquote class="vq-quote">I owe a <span class="g">huge part of my success</span> to Anmol sir's guidance. His mentorship was a <span class="g">game changer</span> for me.</blockquote>
       <p class="vq-attr"><b>Sudhanshu Shekhar</b>All India Rank 490, NDA 156th Course<br>Recommended by 1 AFSB Dehradun</p>
     </div>
-  </div>
-</section>
-
-<!-- ============ 3b. KNOW YOUR MENTOR (collapsible) ============ -->
-<section class="mentor" id="mentor">
-  <div class="wrap">
-    <details class="mentor-panel" id="mentorPanel">
-      <summary class="mentor-sum">
-        <span class="mentor-sum-l">
-          <span class="overline">Meet your mentor</span>
-          <span class="mentor-sum-t">Know your mentor</span>
-        </span>
-        <span class="mentor-caret" aria-hidden="true"></span>
-      </summary>
-      <div class="mentor-body">
-        <h3>About Anmol Sharma</h3>
-        <ul class="mentor-creds">
-          <li>Secured All India Rank 32 in UPSC CDS 2018.</li>
-          <li>Recommended by 14 SSB, Allahabad.</li>
-          <li>CUET topper and UGC-NET qualified.</li>
-          <li>Over 10 years of UPSC experience, spanning multiple examinations and stages, including the Civil Services Interview.</li>
-          <li>Academic background in History Honours and a Master's in History from the University of Delhi.</li>
-        </ul>
-        <p>Having spent years preparing for competitive examinations, clearing stages, facing setbacks and mentoring aspirants for Civil Services and Defence examinations, I understand the journey from a student's perspective. I know the challenges of navigating an extensive syllabus, managing uncertainty and staying consistent through repeated attempts.</p>
-        <p>At VicThree, my focus is on clear concepts, structured preparation and effective learning without overwhelming students. I believe preparation should leave room for breaks, personal well-being and mental health. Sometimes students need another lecture, sometimes a simpler explanation, and sometimes simply the space to recharge.</p>
-        <p>My aim is to provide the guidance and structure that helped me navigate some of the toughest competitive examinations in India, and to use that experience to help students succeed.</p>
-        <p class="mentor-tagline">Learn with clarity. Prepare with purpose. Trust the process.</p>
-      </div>
-    </details>
   </div>
 </section>
 
@@ -597,12 +568,11 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
 <!-- ============ 6b. TEACHING SCREENSHOTS (auto-scrolling) ============ -->
 <section class="teaching" id="teaching" aria-label="Teaching screenshots">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head teach-head">
       <div class="overline">Inside the classroom</div>
-      <h2>This is how the lessons look.</h2>
     </div>
   </div>
-  <div class="marquee teach-marquee" data-clone data-pxs="16" data-hoverpause aria-label="Teaching screenshots">
+  <div class="marquee teach-marquee" data-clone data-pxs="42" data-hoverpause aria-label="Teaching screenshots">
     <div class="marquee-track">
       <figure class="teach-card"><img src="assets/teaching/teach-01.webp?v=1" alt="Anmol teaching tropical cyclones" loading="lazy" decoding="async"></figure>
       <figure class="teach-card"><img src="assets/teaching/teach-02.webp?v=1" alt="Anmol teaching the onset of the monsoon" loading="lazy" decoding="async"></figure>
@@ -825,6 +795,31 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
   </div>
 </footer>
 
+<!-- ============ KNOW YOUR MENTOR (frosted popup) ============ -->
+<div class="mentor-modal" id="mentorModal" role="dialog" aria-modal="true" aria-labelledby="mentorTitle" hidden>
+  <div class="mentor-overlay" data-mentor-close></div>
+  <div class="mentor-dialog" role="document">
+    <button class="mentor-close" type="button" aria-label="Close" data-mentor-close>&times;</button>
+    <div class="mentor-head">
+      <span class="overline">Meet your mentor</span>
+      <h3 id="mentorTitle">About Anmol Sharma</h3>
+    </div>
+    <ul class="mentor-creds">
+      <li>Secured All India Rank 32 in UPSC CDS 2018.</li>
+      <li>Recommended by 14 SSB, Allahabad.</li>
+      <li>CUET topper and UGC-NET qualified.</li>
+      <li>Over 10 years of UPSC experience, spanning multiple examinations and stages, including the Civil Services Interview.</li>
+      <li>Academic background in History Honours and a Master's in History from the University of Delhi.</li>
+    </ul>
+    <div class="mentor-prose">
+      <p>Having spent years preparing for competitive examinations, clearing stages, facing setbacks and mentoring aspirants for Civil Services and Defence examinations, I understand the journey from a student's perspective. I know the challenges of navigating an extensive syllabus, managing uncertainty and staying consistent through repeated attempts.</p>
+      <p>At VicThree, my focus is on clear concepts, structured preparation and effective learning without overwhelming students. I believe preparation should leave room for breaks, personal well-being and mental health. Sometimes students need another lecture, sometimes a simpler explanation, and sometimes simply the space to recharge.</p>
+      <p>My aim is to provide the guidance and structure that helped me navigate some of the toughest competitive examinations in India, and to use that experience to help students succeed.</p>
+    </div>
+    <p class="mentor-tagline">Learn with clarity. Prepare with purpose. Trust the process.</p>
+  </div>
+</div>
+
 <script src="assets/main.js?v=11"></script>
 
 <!-- ===== VicThree CTA wiring: point buttons at Razorpay / WhatsApp + fire Lead ===== -->
@@ -864,12 +859,16 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
 })();
 </script>
 
-<!-- ===== Open the mentor panel when its hero button is tapped ===== -->
+<!-- ===== Know Your Mentor popup: open/close ===== -->
 <script>
 (function(){
-  var btn = document.querySelector('[data-open-mentor]');
-  var panel = document.getElementById('mentorPanel');
-  if (btn && panel) btn.addEventListener('click', function(){ panel.open = true; });
+  var modal = document.getElementById('mentorModal');
+  if (!modal) return;
+  function open(e){ if (e) e.preventDefault(); modal.hidden = false; document.body.style.overflow = 'hidden'; }
+  function close(){ modal.hidden = true; document.body.style.overflow = ''; }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-open-mentor]'), function(b){ b.addEventListener('click', open); });
+  Array.prototype.forEach.call(modal.querySelectorAll('[data-mentor-close]'), function(b){ b.addEventListener('click', close); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !modal.hidden) close(); });
 })();
 </script>
 </body>
