@@ -862,6 +862,7 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
         currency: o.currency,
         name: 'VicThree Defence',
         description: o.description || 'GS Geography Trial',
+        image: 'https://victhreedefence.com/assets/shield-512.png',
         theme: { color: '#0f2340' },
         handler: function(resp){
           fetch(API + '/verify-payment', {
