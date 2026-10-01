@@ -1,0 +1,12 @@
+# Never commit secrets. Razorpay KEY SECRET lives only in the
+# Cloudflare Worker's Secrets (dashboard), never in this repo.
+.env
+.env.*
+*.key
+secrets.*
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+nul
+node_modules/

@@ -27,7 +27,11 @@
 window.VT = {
   // 1) Meta Pixel ID — Events Manager → your Pixel → the ~15-16 digit number
   PIXEL_ID:  "1401564481345603",
-  // 2) Razorpay ₹999 Payment Link — Razorpay → Payment Links → your link URL
+  // 2a) Razorpay Standard Checkout — paste your Cloudflare Worker URL here
+  //     (the victhree-razorpay Worker). When set, the ₹999 buttons open the
+  //     on-site Razorpay modal. Leave as-is to fall back to the Payment Link.
+  RZP_API:   "https://victhree-razorpay.anmolxsharma.workers.dev",
+  // 2b) Razorpay ₹999 Payment Link — fallback if RZP_API is not set.
   RZP_LINK:  "PASTE_RAZORPAY_LINK",
   // 3) WhatsApp number — country code + number, DIGITS ONLY, no + or spaces (e.g. 9198XXXXXXXX)
   WA_NUMBER: "918368376945",
@@ -816,16 +820,22 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
 
 <script src="assets/main.js?v=11"></script>
 
+<!-- Razorpay Standard Checkout (only used once RZP_API is set) -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
 <!-- ===== VicThree CTA wiring: point buttons at Razorpay / WhatsApp + fire Lead ===== -->
 <script>
 (function(){
   var VT = window.VT || {};
   var pixelReady = VT.PIXEL_ID && VT.PIXEL_ID.indexOf('PASTE') === -1;
+  var haveAPI = VT.RZP_API  && VT.RZP_API.indexOf('PASTE')  === -1;
   var haveRZP = VT.RZP_LINK && VT.RZP_LINK.indexOf('PASTE') === -1;
   var haveWA  = VT.WA_NUMBER && VT.WA_NUMBER.indexOf('PASTE') === -1;
   var waURL = haveWA
     ? 'https://wa.me/' + VT.WA_NUMBER.replace(/\D/g,'') + '?text=' + encodeURIComponent(VT.WA_MSG || '')
     : null;
+  var TELEGRAM = 'https://t.me/anmolxsharma';
+  var API = haveAPI ? VT.RZP_API.replace(/\/+$/,'') : null;
 
   function fireLead(method){
     if (pixelReady && window.fbq) {
@@ -833,15 +843,72 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
     }
   }
 
-  // Temporary fallback: until real Razorpay/WhatsApp values are pasted, every CTA
-  // opens WhatsApp (or Telegram only if no WhatsApp number), so nothing is ever a dead button.
-  var TELEGRAM = 'https://t.me/anmolxsharma';
+  // Standard Checkout flow: create order on the Worker, open the Razorpay
+  // modal, verify the signature on the Worker, then land on thank-you.html
+  // (which fires the Purchase pixel) only after a verified payment.
+  function startCheckout(){
+    fireLead('checkout');
+    fetch(API + '/create-order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ product: 'trial' })
+    })
+    .then(function(r){ if(!r.ok) throw new Error('order'); return r.json(); })
+    .then(function(o){
+      var rzp = new Razorpay({
+        key: o.key_id,
+        order_id: o.order_id,
+        amount: o.amount,
+        currency: o.currency,
+        name: 'VicThree Defence',
+        description: o.description || 'GS Geography Trial',
+        theme: { color: '#0f2340' },
+        handler: function(resp){
+          fetch(API + '/verify-payment', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(resp)
+          })
+          .then(function(v){ return v.json(); })
+          .then(function(v){
+            if (v && v.verified) {
+              location.href = 'thank-you.html?razorpay_payment_id=' + encodeURIComponent(resp.razorpay_payment_id) +
+                              '&razorpay_order_id='   + encodeURIComponent(resp.razorpay_order_id) +
+                              '&razorpay_signature='  + encodeURIComponent(resp.razorpay_signature);
+            } else {
+              alert('We received your payment but could not verify it automatically. If money was deducted, please message us on WhatsApp and we will confirm your access right away.');
+            }
+          })
+          .catch(function(){
+            alert('Payment went through but the confirmation call failed. Please message us on WhatsApp and we will sort it out immediately.');
+          });
+        },
+        modal: { ondismiss: function(){ /* user closed the modal — do nothing */ } }
+      });
+      rzp.on('payment.failed', function(e){
+        var msg = (e && e.error && e.error.description) ? e.error.description : 'Please try again.';
+        alert('Payment failed: ' + msg);
+      });
+      rzp.open();
+    })
+    .catch(function(){
+      // Order could not be created — fall back so the button is never dead.
+      window.open(haveRZP ? VT.RZP_LINK : (waURL || TELEGRAM), '_blank', 'noopener');
+    });
+  }
 
-  // ₹999 checkout buttons -> Razorpay Payment Link (same tab, so it can redirect to thank-you.html)
+  // ₹999 checkout buttons.
   document.querySelectorAll('[data-cta="checkout"]').forEach(function(el){
-    el.setAttribute("href", haveRZP ? VT.RZP_LINK : (waURL || TELEGRAM));
-    if (!haveRZP){ el.setAttribute('target','_blank'); el.setAttribute('rel','noopener'); }
-    el.addEventListener('click', function(){ fireLead('checkout'); });
+    if (haveAPI) {
+      // Standard Checkout: open the on-site Razorpay modal.
+      el.setAttribute('href', '#');
+      el.addEventListener('click', function(ev){ ev.preventDefault(); startCheckout(); });
+    } else {
+      // Fallback: Payment Link if present, else WhatsApp/Telegram.
+      el.setAttribute('href', haveRZP ? VT.RZP_LINK : (waURL || TELEGRAM));
+      if (!haveRZP){ el.setAttribute('target','_blank'); el.setAttribute('rel','noopener'); }
+      el.addEventListener('click', function(){ fireLead('checkout'); });
+    }
   });
 
   // WhatsApp buttons -> wa.me with pre-filled message (new tab)
