@@ -849,24 +849,30 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
   // Standard Checkout flow: create order on the Worker, open the Razorpay
   // modal, verify the signature on the Worker, then land on thank-you.html
   // (which fires the Purchase pixel) only after a verified payment.
-  function startCheckout(product){
+  // A buy button opens the details step first; once we have name/email/phone we
+  // create the order (storing them as notes) and open the Razorpay modal.
+  function startCheckout(product){ collectDetails(product || 'trial'); }
+
+  function doCheckout(product, buyer){
     fireLead('checkout');
     fetch(API + '/create-order', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ product: product || 'trial' })
+      body: JSON.stringify({ product: product || 'trial', name: buyer.name, email: buyer.email, contact: buyer.contact })
     })
     .then(function(r){ if(!r.ok) throw new Error('order'); return r.json(); })
     .then(function(o){
+      var pf = o.prefill || {};
       var rzp = new Razorpay({
         key: o.key_id,
         order_id: o.order_id,
         amount: o.amount,
         currency: o.currency,
         name: 'VicThree Defence',
-        description: o.description || 'GS Geography Trial',
+        description: o.description || 'VicThree Defence',
         image: 'https://victhreedefence.com/assets/shield-512.png',
         theme: { color: '#0f2340' },
+        prefill: { name: pf.name || buyer.name, email: pf.email || buyer.email, contact: pf.contact || buyer.contact },
         handler: function(resp){
           fetch(API + '/verify-payment', {
             method: 'POST',
@@ -878,7 +884,8 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
             if (v && v.verified) {
               location.href = 'thank-you.html?razorpay_payment_id=' + encodeURIComponent(resp.razorpay_payment_id) +
                               '&razorpay_order_id='   + encodeURIComponent(resp.razorpay_order_id) +
-                              '&razorpay_signature='  + encodeURIComponent(resp.razorpay_signature);
+                              '&razorpay_signature='  + encodeURIComponent(resp.razorpay_signature) +
+                              '&email=' + encodeURIComponent(buyer.email);
             } else {
               alert('We received your payment but could not verify it automatically. If money was deducted, please message us on WhatsApp and we will confirm your access right away.');
             }
@@ -899,6 +906,64 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
       // Order could not be created — fall back so the button is never dead.
       window.open(haveRZP ? VT.RZP_LINK : (waURL || TELEGRAM), '_blank', 'noopener');
     });
+  }
+
+  // --- Buyer details modal (name / email / phone), collected before payment ---
+  var _vtd = null;
+  function collectDetails(product){
+    if (!_vtd) _vtd = buildDetailsModal();
+    _vtd.querySelector('.vtd-err').textContent = '';
+    _vtd.setAttribute('data-product', product);
+    _vtd.hidden = false;
+    document.body.style.overflow = 'hidden';
+    setTimeout(function(){ var n = _vtd.querySelector('#vtd-name'); if (n) n.focus(); }, 30);
+  }
+
+  function buildDetailsModal(){
+    var wrap = document.createElement('div');
+    wrap.className = 'vtd-overlay'; wrap.hidden = true;
+    wrap.innerHTML =
+      '<div class="vtd-card" role="dialog" aria-modal="true" aria-labelledby="vtd-h">' +
+        '<button type="button" class="vtd-x" aria-label="Close">&times;</button>' +
+        '<h3 id="vtd-h">Your details</h3>' +
+        '<p class="vtd-sub">We use these to set up your portal access. You will log in with this email.</p>' +
+        '<label for="vtd-name">Full name</label><input id="vtd-name" type="text" autocomplete="name" placeholder="Your full name">' +
+        '<label for="vtd-email">Email</label><input id="vtd-email" type="email" autocomplete="email" placeholder="you@email.com">' +
+        '<label for="vtd-phone">Mobile</label><input id="vtd-phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="10-digit mobile">' +
+        '<p class="vtd-err" role="alert"></p>' +
+        '<button type="button" class="vtd-go">Proceed to payment</button>' +
+      '</div>';
+    var style = document.createElement('style');
+    style.textContent =
+      '.vtd-overlay{position:fixed;inset:0;background:rgba(10,20,40,.6);display:flex;align-items:center;justify-content:center;z-index:99999;padding:16px}' +
+      '.vtd-card{background:#fff;border-radius:16px;max-width:380px;width:100%;padding:24px;box-shadow:0 20px 60px rgba(0,0,0,.3);position:relative;font-family:inherit}' +
+      '.vtd-card h3{margin:0 0 4px;font-size:1.3rem;color:#0f2340}' +
+      '.vtd-sub{margin:0 0 14px;font-size:.85rem;color:#5a6a82;line-height:1.4}' +
+      '.vtd-card label{display:block;font-size:.8rem;font-weight:600;color:#33435c;margin:10px 0 4px}' +
+      '.vtd-card input{width:100%;box-sizing:border-box;padding:11px 13px;border:1px solid #cdd6e3;border-radius:10px;font-size:1rem}' +
+      '.vtd-card input:focus{outline:none;border-color:#0f2340}' +
+      '.vtd-err{color:#c0392b;font-size:.82rem;min-height:1em;margin:8px 0 0}' +
+      '.vtd-go{width:100%;margin-top:14px;padding:13px;border:0;border-radius:10px;background:#0f2340;color:#fff;font-size:1rem;font-weight:700;cursor:pointer}' +
+      '.vtd-go:hover{background:#163055}' +
+      '.vtd-x{position:absolute;top:10px;right:14px;border:0;background:none;font-size:1.6rem;line-height:1;color:#8a97a8;cursor:pointer}';
+    document.head.appendChild(style);
+    document.body.appendChild(wrap);
+
+    function closeM(){ wrap.hidden = true; document.body.style.overflow = ''; }
+    wrap.querySelector('.vtd-x').addEventListener('click', closeM);
+    wrap.addEventListener('click', function(e){ if (e.target === wrap) closeM(); });
+    wrap.querySelector('.vtd-go').addEventListener('click', function(){
+      var name  = wrap.querySelector('#vtd-name').value.trim();
+      var email = wrap.querySelector('#vtd-email').value.trim();
+      var phone = wrap.querySelector('#vtd-phone').value.replace(/\D/g,'');
+      var err   = wrap.querySelector('.vtd-err');
+      if (name.length < 2){ err.textContent = 'Please enter your name.'; return; }
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ err.textContent = 'Please enter a valid email.'; return; }
+      if (phone.length !== 10){ err.textContent = 'Please enter a 10-digit mobile number.'; return; }
+      closeM();
+      doCheckout(wrap.getAttribute('data-product') || 'trial', { name: name, email: email, contact: phone });
+    });
+    return wrap;
   }
 
   // ₹999 checkout buttons.

@@ -55,13 +55,22 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
     <div class="ty-tick" aria-hidden="true">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>
     </div>
-    <h1>Payment received. Welcome in.</h1>
-    <p>Thank you for starting the &#8377;999 Geography trial. Your payment is confirmed.</p>
-    <p><strong>What happens next:</strong> Anmol will personally message you on WhatsApp shortly with your Day&nbsp;1 access and the trial schedule. Please keep an eye on WhatsApp.</p>
-    <p>If you don't hear back within a few hours, reply to your payment confirmation email or message us on Telegram.</p>
-    <a class="btn primary" href="gs-course.html" style="margin-top:8px">Back to the course page</a>
+    <h1>Payment received. You're enrolled.</h1>
+    <p>Your VicThree Defence access is ready right away.</p>
+    <p><strong>Log in to the student portal</strong> with your email<span id="ty-email"></span> to begin. You'll get a one-time code on that email each time you sign in, so there's no password to remember.</p>
+    <a class="btn primary" href="https://learn.victhreedefence.com" style="margin-top:8px">Open the student portal</a>
+    <p style="margin-top:18px;font-size:.9rem">Trouble logging in? Message us on <a href="https://t.me/anmolxsharma" target="_blank" rel="noopener">Telegram</a> or reply to your payment confirmation email.</p>
   </div>
 </main>
+
+<script>
+(function(){
+  try {
+    var em = new URLSearchParams(location.search).get('email');
+    if (em) { var el = document.getElementById('ty-email'); if (el) el.textContent = ' (' + em + ')'; }
+  } catch (e) {}
+})();
+</script>
 
 </body>
 </html>

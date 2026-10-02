@@ -80,13 +80,21 @@ export default {
 /* ---------- STEP 1: create a Razorpay order ---------- */
 async function createOrder(body, env, cors) {
   // The browser sends a product key; the price is decided here.
-  const product = PRODUCTS[(body && body.product) || "trial"];
+  const productKey = (body && body.product) || "trial";
+  const product = PRODUCTS[productKey];
   if (!product) return json({ error: "Unknown product" }, 400, cors);
 
   const amount = product.amount;
   if (!Number.isInteger(amount) || amount < 100) {
     return json({ error: "Invalid amount" }, 400, cors);
   }
+
+  // Buyer details, captured on the site before checkout. Stored as order NOTES so
+  // the portal's webhook can auto-enrol the student with the right plan and name.
+  // (Order notes reliably reach the payment.captured webhook.)
+  const name    = String((body && body.name)    || "").trim().slice(0, 120);
+  const email   = String((body && body.email)   || "").trim().toLowerCase().slice(0, 160);
+  const contact = String((body && body.contact) || "").trim().slice(0, 20);
 
   const auth = "Basic " + btoa(env.RZP_KEY_ID + ":" + env.RZP_KEY_SECRET);
   const receipt = "vt_" + Date.now().toString(36);
@@ -96,7 +104,10 @@ async function createOrder(body, env, cors) {
     r = await fetch("https://api.razorpay.com/v1/orders", {
       method: "POST",
       headers: { "Authorization": auth, "Content-Type": "application/json" },
-      body: JSON.stringify({ amount, currency: "INR", receipt, payment_capture: 1 })
+      body: JSON.stringify({
+        amount, currency: "INR", receipt, payment_capture: 1,
+        notes: { product: productKey, name, email, contact }
+      })
     });
   } catch (e) {
     return json({ error: "Could not reach Razorpay" }, 500, cors);
@@ -111,13 +122,15 @@ async function createOrder(body, env, cors) {
   }
 
   const order = await r.json();
-  // Only what the browser needs — the key id here is the PUBLISHABLE one.
+  // Only what the browser needs — the key id here is the PUBLISHABLE one. We echo
+  // the buyer details back so the checkout can prefill the Razorpay modal.
   return json({
     key_id: env.RZP_KEY_ID,
     order_id: order.id,
     amount: order.amount,
     currency: order.currency,
-    description: product.label
+    description: product.label,
+    prefill: { name, email, contact }
   }, 200, cors);
 }
 
