@@ -463,6 +463,9 @@ section{padding:74px 0;position:relative}
 .plan-feats{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
 .plan-feats li{position:relative;padding-left:24px;font-family:var(--sans);font-size:.88rem;color:var(--ink);line-height:1.45}
 .plan-feats li::before{content:"";position:absolute;left:3px;top:7px;width:8px;height:8px;border-radius:50%;background:var(--gold);opacity:.75}
+/* "not included" items: greyed, with a muted cross instead of the gold dot */
+.plan-feats li.feat-no{color:var(--ink-soft);opacity:.72}
+.plan-feats li.feat-no::before{content:"\2715";left:1px;top:0;width:auto;height:auto;background:none;border-radius:0;font-size:.82rem;font-weight:800;line-height:1.45;color:#c0564b;opacity:.85}
 .plan-foot{margin-top:auto;display:flex;flex-direction:column;gap:12px;padding-top:8px}
 .plan-fee{font-family:var(--serif);font-weight:800;font-size:1.3rem;color:var(--navy)}
 .plan-foot .btn{width:100%}
