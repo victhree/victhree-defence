@@ -27,7 +27,10 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
   // Only count a Purchase when Razorpay actually sent us back a payment id.
   var q = new URLSearchParams(location.search);
   if (q.get('razorpay_payment_id')) {
-    fbq('track', 'Purchase', {content_name:'GS Geography Trial', value:999, currency:'INR'});
+    var LABELS = { trial:'Geography Trial', hero:'VicThree Hero', elite:'VicThree Elite', legend:'VicThree Legend' };
+    var prod = q.get('product') || 'trial';
+    var amt = parseFloat(q.get('amt')); if (!isFinite(amt) || amt <= 0) amt = 999;
+    fbq('track', 'Purchase', { content_name: (LABELS[prod] || 'VicThree Defence'), content_type: 'product', value: amt, currency: 'INR' });
   }
 })();
 </script>

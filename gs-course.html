@@ -885,7 +885,9 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
               location.href = 'thank-you.html?razorpay_payment_id=' + encodeURIComponent(resp.razorpay_payment_id) +
                               '&razorpay_order_id='   + encodeURIComponent(resp.razorpay_order_id) +
                               '&razorpay_signature='  + encodeURIComponent(resp.razorpay_signature) +
-                              '&email=' + encodeURIComponent(buyer.email);
+                              '&email=' + encodeURIComponent(buyer.email) +
+                              '&product=' + encodeURIComponent(product || 'trial') +
+                              '&amt=' + encodeURIComponent((o.amount || 0) / 100);
             } else {
               alert('We received your payment but could not verify it automatically. If money was deducted, please message us on WhatsApp and we will confirm your access right away.');
             }
