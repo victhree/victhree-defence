@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&display=swap">
-<link rel="stylesheet" href="assets/styles.css?v=123">
+<link rel="stylesheet" href="assets/styles.css?v=124">
 
 <!-- =========================================================================
      VICTHREE AD CONFIG  —  PASTE YOUR 3 VALUES BELOW, THEN DEPLOY.
@@ -229,6 +229,7 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
             </ul>
           </div>
         </details>
+        <a class="btn primary plan-buy" href="#" data-cta="checkout" data-product="elite" aria-label="Buy VicThree Elite">Buy now</a>
       </div>
 
       <!-- ---------- LEGEND ---------- -->
@@ -283,6 +284,7 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
             </ul>
           </div>
         </details>
+        <a class="btn primary plan-buy" href="#" data-cta="checkout" data-product="legend" aria-label="Buy VicThree Legend">Buy now</a>
       </div>
 
       <!-- ---------- HERO (entry) ---------- -->
@@ -329,6 +331,7 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
             </ul>
           </div>
         </details>
+        <a class="btn primary plan-buy" href="#" data-cta="checkout" data-product="hero" aria-label="Buy VicThree Hero">Buy now</a>
       </div>
 
     </div>
@@ -846,12 +849,12 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
   // Standard Checkout flow: create order on the Worker, open the Razorpay
   // modal, verify the signature on the Worker, then land on thank-you.html
   // (which fires the Purchase pixel) only after a verified payment.
-  function startCheckout(){
+  function startCheckout(product){
     fireLead('checkout');
     fetch(API + '/create-order', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ product: 'trial' })
+      body: JSON.stringify({ product: product || 'trial' })
     })
     .then(function(r){ if(!r.ok) throw new Error('order'); return r.json(); })
     .then(function(o){
@@ -903,7 +906,7 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
     if (haveAPI) {
       // Standard Checkout: open the on-site Razorpay modal.
       el.setAttribute('href', '#');
-      el.addEventListener('click', function(ev){ ev.preventDefault(); startCheckout(); });
+      el.addEventListener('click', function(ev){ ev.preventDefault(); startCheckout(el.getAttribute('data-product') || 'trial'); });
     } else {
       // Fallback: Payment Link if present, else WhatsApp/Telegram.
       el.setAttribute('href', haveRZP ? VT.RZP_LINK : (waURL || TELEGRAM));

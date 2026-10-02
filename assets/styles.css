@@ -779,6 +779,8 @@ body.gs-page .method .guarantee{font-weight:600}
 .plan-badge.seats{align-self:flex-start;background:var(--gold);color:var(--navy);
   border-color:var(--gold);font-size:.82rem;font-weight:900;letter-spacing:.08em;
   padding:8px 16px;box-shadow:0 3px 12px rgba(184,145,47,.42)}
+/* per-tier Buy now button, pinned to the very foot of each card */
+.tiers .plan-buy{order:10;width:100%;margin-top:14px;justify-content:center}
 /* single shared enquiry button below the three tiers */
 .plans-cta{margin-top:26px;display:flex;justify-content:center}
 .plans-cta .btn{min-width:min(340px,100%)}
