@@ -35,7 +35,7 @@ const ALLOWED_ORIGINS = [
    Amounts are in paise (₹999 = 99900). Minimum Razorpay amount: 100. */
 const PRODUCTS = {
   trial:  { amount: 99900,   label: "GS Geography Trial (1 week)" },
-  hero:   { amount: 299900,  label: "VicThree Hero — Self-paced GS course" },
+  hero:   { amount: 299900,  label: "VicThree Hero — Structured GS Course" },
   elite:  { amount: 849900,  label: "VicThree Elite — Live 90-day program" },
   legend: { amount: 1199900, label: "VicThree Legend — 1-on-1 mentorship" }
 };
