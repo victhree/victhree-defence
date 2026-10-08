@@ -763,6 +763,9 @@ body.gs-page .method .guarantee{font-weight:600}
 .trial-card .tc-adjust b{color:var(--gold-bright)}
 .trial-card .tc-note{font-family:var(--sans);font-size:.8rem;color:var(--gold-soft);
   opacity:.75;margin:14px 0 0}
+/* the ₹999 trial, demoted below the tiers: narrower + spaced, so it reads as secondary */
+.trial-secondary{max-width:820px;margin:40px auto 0}
+.trial-secondary .tc-k{color:var(--gold-soft)}
 @media(max-width:620px){.trial-card .tc-feats{grid-template-columns:1fr}}
 
 /* --- tier cards --- */
@@ -822,6 +825,8 @@ body.gs-page .method .guarantee{font-weight:600}
 .tm-body li::before{content:"";position:absolute;left:2px;top:.55em;width:6px;height:6px;
   border-radius:50%;background:var(--gold);opacity:.7}
 .tm-body .tm-inherit{color:var(--navy);font-weight:700}
+/* "What's not included" list inside a tier's full details: muted cross, stated plainly */
+.tm-body ul.tm-no li::before{content:"\2715";left:0;top:0;width:auto;height:auto;background:none;border-radius:0;color:#c0564b;font-weight:800;font-size:.75rem;opacity:.9}
 
 
 /* ============================================================
