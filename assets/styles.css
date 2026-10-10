@@ -713,6 +713,24 @@ body.gs-page .method .guarantee{font-weight:600}
 .gs-fstep p{margin:7px 0 0;font-family:var(--sans);font-size:.88rem;line-height:1.5;color:var(--gold-soft)}
 @media(max-width:900px){.gs-flowsteps{grid-template-columns:repeat(2,1fr);max-width:620px}}
 @media(max-width:520px){.gs-flowsteps{grid-template-columns:1fr}}
+/* three-track daily system: GK (existing flow) + SSB + English */
+.track-head{text-align:center;margin:0 auto 18px;max-width:760px}
+.track-head .track-k{font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:.14em;font-size:.66rem;color:var(--gold-bright)}
+.track-head .track-tier{display:inline-block;margin-left:8px;vertical-align:middle;font-family:var(--sans);font-weight:800;text-transform:uppercase;letter-spacing:.07em;font-size:.58rem;color:var(--navy);background:var(--gold);border-radius:20px;padding:3px 10px}
+.track-head .track-tier.all{color:var(--gold-bright);background:rgba(233,220,184,.1);border:1px solid var(--line-dark)}
+.track-head h3{color:#fff;font-size:1.3rem;margin:9px 0 4px}
+.track-head .track-tag{margin:0;font-family:var(--sans);font-size:.96rem;font-weight:600;color:var(--gold-bright)}
+.track-head-gs{margin-bottom:22px}
+.track-pair{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;max-width:1000px;margin:6px auto 30px}
+.track-pair .track{background:rgba(23,49,87,.72);border:1px solid var(--line-dark);border-radius:16px;padding:26px 24px}
+.track-pair .track .track-head{text-align:left;margin:0 0 15px;max-width:none}
+.track-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px}
+.track-list li{position:relative;padding-left:22px;font-family:var(--sans);font-size:.92rem;line-height:1.55;color:var(--gold-soft)}
+.track-list li::before{content:"";position:absolute;left:3px;top:.6em;width:7px;height:7px;border-radius:50%;background:var(--gold);opacity:.85}
+.track-list b{color:#fff;font-weight:700}
+.track-close{text-align:center;max-width:72ch;margin:0 auto 16px;font-family:var(--serif);font-size:1.08rem;line-height:1.5;color:#fff}
+.track-note{text-align:center;max-width:72ch;margin:0 auto 34px;font-family:var(--sans);font-size:.82rem;line-height:1.55;color:var(--gold-soft);opacity:.8}
+@media(max-width:820px){.track-pair{grid-template-columns:1fr}}
 
 /* evidence slot: paper analysis / sample of teaching / results (cream) */
 .gs-slot{max-width:820px;margin:44px auto 0;background:#fff;border:1px dashed var(--line-2);border-radius:16px;padding:clamp(24px,4vw,34px);text-align:center}
